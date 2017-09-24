@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		286C4FC547FEB15D1A810FA7 /* Pods_ARSearcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6BDE2C55C90EC894F9335E /* Pods_ARSearcher.framework */; };
+		8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3E81F77F130007DB730 /* HomeViewController.swift */; };
+		8A86E3EB1F77F442007DB730 /* SearchSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */; };
 		8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7716E1F77771B00F2683C /* AppDelegate.swift */; };
 		8AF771711F77771B00F2683C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771701F77771B00F2683C /* art.scnassets */; };
-		8AF771731F77771B00F2683C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF771721F77771B00F2683C /* ViewController.swift */; };
+		8AF771731F77771B00F2683C /* StoreSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF771721F77771B00F2683C /* StoreSceneViewController.swift */; };
 		8AF771761F77771B00F2683C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771741F77771B00F2683C /* Main.storyboard */; };
 		8AF771781F77771B00F2683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771771F77771B00F2683C /* Assets.xcassets */; };
 		8AF7717B1F77771B00F2683C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771791F77771B00F2683C /* LaunchScreen.storyboard */; };
@@ -36,10 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A86E3E81F77F130007DB730 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneViewController.swift; sourceTree = "<group>"; };
 		8AF7716B1F77771B00F2683C /* ARSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF7716E1F77771B00F2683C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF771701F77771B00F2683C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		8AF771721F77771B00F2683C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8AF771721F77771B00F2683C /* StoreSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSceneViewController.swift; sourceTree = "<group>"; };
 		8AF771751F77771B00F2683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AF771771F77771B00F2683C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AF7717A1F77771B00F2683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -125,11 +129,13 @@
 			children = (
 				8AF7716E1F77771B00F2683C /* AppDelegate.swift */,
 				8AF771701F77771B00F2683C /* art.scnassets */,
-				8AF771721F77771B00F2683C /* ViewController.swift */,
+				8AF771721F77771B00F2683C /* StoreSceneViewController.swift */,
+				8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */,
 				8AF771741F77771B00F2683C /* Main.storyboard */,
 				8AF771771F77771B00F2683C /* Assets.xcassets */,
 				8AF771791F77771B00F2683C /* LaunchScreen.storyboard */,
 				8AF7717C1F77771B00F2683C /* Info.plist */,
+				8A86E3E81F77F130007DB730 /* HomeViewController.swift */,
 			);
 			path = ARSearcher;
 			sourceTree = "<group>";
@@ -338,8 +344,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AF771731F77771B00F2683C /* ViewController.swift in Sources */,
+				8AF771731F77771B00F2683C /* StoreSceneViewController.swift in Sources */,
+				8A86E3EB1F77F442007DB730 /* SearchSceneViewController.swift in Sources */,
 				8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */,
+				8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

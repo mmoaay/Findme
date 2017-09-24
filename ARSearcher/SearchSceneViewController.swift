@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchSceneViewController.swift
 //  ARSearcher
 //
 //  Created by zhengperry on 2017/9/24.
@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
