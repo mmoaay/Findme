@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		286C4FC547FEB15D1A810FA7 /* Pods_ARSearcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6BDE2C55C90EC894F9335E /* Pods_ARSearcher.framework */; };
 		8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7716E1F77771B00F2683C /* AppDelegate.swift */; };
 		8AF771711F77771B00F2683C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771701F77771B00F2683C /* art.scnassets */; };
 		8AF771731F77771B00F2683C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF771721F77771B00F2683C /* ViewController.swift */; };
@@ -49,6 +50,9 @@
 		8AF7718C1F77771B00F2683C /* ARSearcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARSearcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF771901F77771B00F2683C /* ARSearcherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSearcherUITests.swift; sourceTree = "<group>"; };
 		8AF771921F77771B00F2683C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B6BDE2C55C90EC894F9335E /* Pods_ARSearcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSearcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1016F069115F291441BFAAD /* Pods-ARSearcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSearcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARSearcher/Pods-ARSearcher.debug.xcconfig"; sourceTree = "<group>"; };
+		C4C45D5017A0D054276930EF /* Pods-ARSearcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSearcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARSearcher/Pods-ARSearcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286C4FC547FEB15D1A810FA7 /* Pods_ARSearcher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0953AA103B27E5DE6A396C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B6BDE2C55C90EC894F9335E /* Pods_ARSearcher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54730FA60FF0FE38B4A9A8CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1016F069115F291441BFAAD /* Pods-ARSearcher.debug.xcconfig */,
+				C4C45D5017A0D054276930EF /* Pods-ARSearcher.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8AF771621F77771B00F2683C = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,8 @@
 				8AF771841F77771B00F2683C /* ARSearcherTests */,
 				8AF7718F1F77771B00F2683C /* ARSearcherUITests */,
 				8AF7716C1F77771B00F2683C /* Products */,
+				54730FA60FF0FE38B4A9A8CF /* Pods */,
+				3D0953AA103B27E5DE6A396C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AF771951F77771B00F2683C /* Build configuration list for PBXNativeTarget "ARSearcher" */;
 			buildPhases = (
+				F56906B7E8175CC03830AE0D /* [CP] Check Pods Manifest.lock */,
 				8AF771671F77771B00F2683C /* Sources */,
 				8AF771681F77771B00F2683C /* Frameworks */,
 				8AF771691F77771B00F2683C /* Resources */,
+				EA6A4E84D42DE14E360CA75A /* [CP] Embed Pods Frameworks */,
+				38C37B5098C4E94C76FD6812 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +284,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38C37B5098C4E94C76FD6812 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARSearcher/Pods-ARSearcher-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA6A4E84D42DE14E360CA75A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARSearcher/Pods-ARSearcher-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F56906B7E8175CC03830AE0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8AF771671F77771B00F2683C /* Sources */ = {
@@ -428,9 +503,11 @@
 		};
 		8AF771961F77771B00F2683C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1016F069115F291441BFAAD /* Pods-ARSearcher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8P2R9XN7Q8;
 				INFOPLIST_FILE = ARSearcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmoaay.ARSearcher;
@@ -442,9 +519,11 @@
 		};
 		8AF771971F77771B00F2683C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4C45D5017A0D054276930EF /* Pods-ARSearcher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8P2R9XN7Q8;
 				INFOPLIST_FILE = ARSearcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmoaay.ARSearcher;
