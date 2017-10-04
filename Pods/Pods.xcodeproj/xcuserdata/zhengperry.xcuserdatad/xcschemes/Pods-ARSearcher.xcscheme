@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFED84C00022FB2639E431283BDDBD8D"
+               BlueprintIdentifier = "7C1839ACF8AC405851DC2FE157DBA08B"
                BuildableName = "Pods_ARSearcher.framework"
                BlueprintName = "Pods-ARSearcher"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFED84C00022FB2639E431283BDDBD8D"
+            BlueprintIdentifier = "7C1839ACF8AC405851DC2FE157DBA08B"
             BuildableName = "Pods_ARSearcher.framework"
             BlueprintName = "Pods-ARSearcher"
             ReferencedContainer = "container:Pods.xcodeproj">

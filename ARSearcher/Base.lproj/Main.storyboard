@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -92,15 +93,33 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="StoreSceneViewController" customModule="ARSearcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                    <view key="view" contentMode="scaleToFill" id="zcB-V8-fbS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3t-2j-VPA">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="bottom" secondItem="dQ7-Fh-sIq" secondAttribute="bottom" id="7SJ-Zt-FZG"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
+                    </view>
                     <navigationItem key="navigationItem" title="Add route" id="hHx-38-B6a">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="AB1-yM-mtK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="AB1-yM-mtK">
+                            <connections>
+                                <action selector="switchPressed:" destination="BV1-FR-VrT" id="SEH-Sj-cS8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
+                        <outlet property="switchBarButtonItem" destination="AB1-yM-mtK" id="zaz-Mh-ZGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -111,13 +130,26 @@
         <scene sceneID="lwo-aJ-5zI">
             <objects>
                 <viewController id="MUc-7a-cAD" customClass="SearchSceneViewController" customModule="ARSearcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uWK-4Q-FQC">
+                    <view key="view" contentMode="scaleToFill" id="oTd-0u-5DH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-eh-Qvi">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VCZ-eh-Qvi" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="Sbk-Jt-TN0"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCZ-eh-Qvi" secondAttribute="trailing" id="YMH-sG-XgJ"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCZ-eh-Qvi" secondAttribute="bottom" id="uGk-c1-qnr"/>
+                            <constraint firstItem="VCZ-eh-Qvi" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="xpN-cr-eyE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
+                    </view>
                     <navigationItem key="navigationItem" title="Route to object" id="qB4-U6-SYS"/>
                     <connections>
-                        <outlet property="sceneView" destination="uWK-4Q-FQC" id="ZoS-Wg-1dn"/>
+                        <outlet property="sceneView" destination="VCZ-eh-Qvi" id="tfE-5r-tIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnf-6q-vRq" sceneMemberID="firstResponder"/>

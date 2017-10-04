@@ -1,5 +1,5 @@
 //
-//  IQKeyboardReturnKeyHandler.h
+// IQKeyboardReturnKeyHandler.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -26,10 +26,10 @@
 #import <Foundation/NSObject.h>
 #import <Foundation/NSObjCRuntime.h>
 
-#import <UIKit/UITextField.h>
-#import <UIKit/UITextView.h>
+#import <UIKit/UITextInputTraits.h>
 
-@class UITextField,UIView, UIViewController;
+@class UITextField, UIView, UIViewController;
+@protocol UITextFieldDelegate, UITextViewDelegate;
 
 /**
  Manages the return key to work like next/done in a view hierarchy.
@@ -85,14 +85,14 @@
 /**
  Add all the UITextField/UITextView responderView's.
  
- @param UIView object to register all it's responder subviews.
+ @param view object to register all it's responder subviews.
  */
 -(void)addResponderFromView:(nonnull UIView*)view;
 
 /**
  Remove all the UITextField/UITextView responderView's.
  
- @param UIView object to unregister all it's responder subviews.
+ @param view object to unregister all it's responder subviews.
  */
 -(void)removeResponderFromView:(nonnull UIView*)view;
 

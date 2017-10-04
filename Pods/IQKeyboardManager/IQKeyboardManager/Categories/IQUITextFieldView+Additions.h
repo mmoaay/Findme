@@ -1,5 +1,5 @@
 //
-//  IQUITextFieldView+Additions.h
+// IQUITextFieldView+Additions.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -33,6 +33,11 @@
  To set customized distance from keyboard for textField/textView. Can't be less than zero
  */
 @property(nonatomic, assign) CGFloat keyboardDistanceFromTextField;
+
+/**
+ If shouldIgnoreSwitchingByNextPrevious is YES then library will ignore this textField/textView while moving to other textField/textView using keyboard toolbar next previous buttons. Default is NO
+ */
+@property(nonatomic, assign) BOOL ignoreSwitchingByNextPrevious;
 
 @end
 

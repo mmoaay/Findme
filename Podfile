@@ -4,9 +4,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 target ‘ARSearcher’ do
-#  pod 'SnapKit'
-#  pod 'Material'
+  pod 'SnapKit', '~> 4.0.0'
+  pod 'Material'
   pod 'IQKeyboardManager'
+  pod 'RealmSwift'
   pod 'SVProgressHUD'
 end
 
