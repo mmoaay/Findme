@@ -28,6 +28,10 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+ 
+        for childNode in RouteCacheService.shared.node.childNodes {
+            sceneView.scene.rootNode.addChildNode(childNode)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

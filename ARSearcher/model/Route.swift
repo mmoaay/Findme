@@ -10,13 +10,27 @@ import Foundation
 import UIKit
 import RealmSwift
 
+protocol Infomationable {
+    var title: String { get }
+}
+
+enum NodeType{
+    case start(info: Infomationable)
+    case object(info: Infomationable)
+    case route
+    
+    func title() -> String {
+        return ""
+    }
+}
+
 class Node: Object {
 }
 
 class Route: Object {
     @objc dynamic var color: UIColor = UIColor.white
     let dogs = List<Node>()
-    @objc dynamic var name: String = ""
+    let objects = List<Node>()
 }
 
 

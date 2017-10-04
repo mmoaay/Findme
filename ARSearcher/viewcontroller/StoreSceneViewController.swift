@@ -38,6 +38,10 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func switchPressed(_ sender: Any) {
         routingStarted = !routingStarted
         switchBarButtonItem.title = routingStarted ? "Done" : "Start"
+        
+        if false == routingStarted {
+            RouteCacheService.shared.node = sceneView.scene.rootNode
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

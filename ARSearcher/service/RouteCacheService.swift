@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import SceneKit
 
 class RouteCacheService {
+    static let shared = RouteCacheService()
+    
+    var node: SCNNode = SCNNode()
+    
     func route(name: String) -> Route {
         return Route()
     }
