@@ -1,15 +1,15 @@
 //
-//  ARSearcherTests.swift
-//  ARSearcherTests
+//  SurpriseTests.swift
+//  SurpriseTests
 //
 //  Created by zhengperry on 2017/9/24.
 //  Copyright © 2017年 mmoaay. All rights reserved.
 //
 
 import XCTest
-@testable import ARSearcher
+@testable import Surprise
 
-class ARSearcherTests: XCTestCase {
+class SurpriseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

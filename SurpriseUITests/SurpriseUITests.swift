@@ -1,6 +1,6 @@
 //
-//  ARSearcherUITests.swift
-//  ARSearcherUITests
+//  SurpriseUITests.swift
+//  SurpriseUITests
 //
 //  Created by zhengperry on 2017/9/24.
 //  Copyright © 2017年 mmoaay. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ARSearcherUITests: XCTestCase {
+class SurpriseUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
