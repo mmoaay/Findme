@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ARSearch-->
+        <!--Surprise-->
         <scene sceneID="Fw4-Jd-NKu">
             <objects>
-                <tableViewController id="iHB-Mh-v7M" customClass="HomeViewController" customModule="ARSearcher" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="iHB-Mh-v7M" customClass="HomeViewController" customModule="Surprise" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6U6-0m-ciB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="iHB-Mh-v7M" id="uvL-Xf-7tc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ARSearch" id="Jby-Cg-X1T">
+                    <navigationItem key="navigationItem" title="Surprise" id="Jby-Cg-X1T">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="t1F-gF-YIE">
                             <connections>
                                 <segue destination="BV1-FR-VrT" kind="show" identifier="from_home_to_store" id="316-V7-HJR"/>
@@ -77,9 +77,11 @@
         <scene sceneID="JDS-6Q-5Na">
             <objects>
                 <navigationController id="gdt-sB-Qds" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Rcz-sh-soT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Rcz-sh-soT">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.27058823529411763" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="iHB-Mh-v7M" kind="relationship" relationship="rootViewController" id="5Ml-d7-ea1"/>
@@ -89,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="-1719" y="123"/>
         </scene>
-        <!--Add route-->
+        <!--Add surprise-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="StoreSceneViewController" customModule="ARSearcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="StoreSceneViewController" customModule="Surprise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zcB-V8-fbS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -110,7 +112,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add route" id="hHx-38-B6a">
+                    <navigationItem key="navigationItem" title="Add surprise" id="hHx-38-B6a">
                         <barButtonItem key="rightBarButtonItem" title="Start" id="AB1-yM-mtK">
                             <connections>
                                 <action selector="switchPressed:" destination="BV1-FR-VrT" id="SEH-Sj-cS8"/>
@@ -126,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="332" y="-278"/>
         </scene>
-        <!--Route to object-->
+        <!--Get the surprise-->
         <scene sceneID="lwo-aJ-5zI">
             <objects>
-                <viewController id="MUc-7a-cAD" customClass="SearchSceneViewController" customModule="ARSearcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MUc-7a-cAD" customClass="SearchSceneViewController" customModule="Surprise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oTd-0u-5DH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -147,7 +149,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Route to object" id="qB4-U6-SYS"/>
+                    <navigationItem key="navigationItem" title="Get the surprise" id="qB4-U6-SYS"/>
                     <connections>
                         <outlet property="sceneView" destination="VCZ-eh-Qvi" id="tfE-5r-tIn"/>
                     </connections>

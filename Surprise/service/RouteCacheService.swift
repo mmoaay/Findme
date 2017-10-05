@@ -12,7 +12,7 @@ import SceneKit
 class RouteCacheService {
     static let shared = RouteCacheService()
     
-    var node: SCNNode = SCNNode()
+    var scene: SCNScene = SCNScene()
     
     func route(name: String) -> Route {
         return Route()

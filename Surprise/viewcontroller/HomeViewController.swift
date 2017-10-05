@@ -8,11 +8,69 @@
 
 import UIKit
 
+extension HomeViewController: UISearchResultsUpdating
+{
+    func updateSearchResults(for searchController: UISearchController) {
+        searchedRoutes = self.routes.filter { (name, time) -> Bool in
+            return name.contains(searchController.searchBar.text!)
+        }
+    }
+}
+
+extension HomeViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "from_home_to_search", sender: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return searchedRoutes.count
+        } else {
+            return routes.count
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive {
+            return "Searched Objects"
+        } else {
+            return "Stored Objects"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var item = (name: "", time: "")
+        if searchController.isActive {
+            item = searchedRoutes[indexPath.row];
+        } else {
+            item = routes[indexPath.row]
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath)
+        cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = item.time
+        
+        return cell
+    }
+}
+
 class HomeViewController: UITableViewController {
     
-    lazy var searchController = UISearchController(searchResultsController:nil)
+    lazy var searchController = ({ () -> UISearchController in
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
+        controller.searchBar.tintColor = UIColor.white
+        controller.hidesNavigationBarDuringPresentation = false
+        controller.dimsBackgroundDuringPresentation = false
+        return controller
+    })()
     
-    lazy var routes = [("Camera", "Sony, Added at 2017.07.15"),("Mobile", "Apple, Added at 2017.07.15"),("Watch", "Apple, Added at 2017.07.15"),("Charge", "China, Added at 2017.07.15")]
+    lazy var routes: [(name: String, time: String)] = [("Camera", "Sony, Added at 2017.07.15"),("Mobile", "Apple, Added at 2017.07.15"),("Watch", "Apple, Added at 2017.07.15"),("Charge", "China, Added at 2017.07.15")]
+    
+    var searchedRoutes: [(name: String, time: String)] = [(name: String, time: String)](){
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,27 +82,6 @@ class HomeViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "from_home_to_search", sender: nil)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Stored Objects"
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath)
-        cell.textLabel?.text = routes[indexPath.row].0
-        cell.detailTextLabel?.text = routes[indexPath.row].1
-        
-        return cell
     }
 
     /*

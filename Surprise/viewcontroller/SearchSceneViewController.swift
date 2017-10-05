@@ -23,15 +23,10 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Create a new scene
-        let scene = SCNScene()
-        
         // Set the scene to the view
-        sceneView.scene = scene
- 
-        for childNode in RouteCacheService.shared.node.childNodes {
-            sceneView.scene.rootNode.addChildNode(childNode)
-        }
+        sceneView.scene = RouteCacheService.shared.scene
+        
+        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
