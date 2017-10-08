@@ -112,10 +112,14 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
             
             let current = pointOfView.position
             if let last = self.last {
-                if last.distance(vector: current) < Constant.ROUTE_DOT_INTERVAL { return }
+                let distance = last.distance(vector: current)
+                if distance < Constant.ROUTE_DOT_INTERVAL { return }
+                
+//                let cone = SCNCone(topRadius: 0.0, bottomRadius: Constant.ROUTE_DOT_RADIUS, height: Constant.ROUTE_DOT_RADIUS*4.0)
                 
                 let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
                 let node = SCNNode(geometry: sphere)
+//                node.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi/2.0), y:CGFloat(asin((current.y-last.y)/distance)), z: CGFloat(asin((current.z-last.z)/distance)), duration: 0.0))
                 node.position = current
                 node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
                 sceneView.scene.rootNode.addChildNode(node)

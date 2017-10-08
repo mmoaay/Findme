@@ -150,7 +150,7 @@ class SwitchView: UIView {
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                 if 0 == count {
                     self.switchButton.isEnabled = true
-                    self.switchButton.setTitle("Waiting...", for: .disabled)
+                    self.switchButton.setTitle("Hold on...", for: .disabled)
                     timer.invalidate()
                 } else {
                     self.switchButton.setTitle(String(count), for: .disabled)
