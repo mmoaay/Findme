@@ -12,17 +12,39 @@ import SceneKit
 class RouteCacheService {
     static let shared = RouteCacheService()
     
-    var scene: SCNScene = SCNScene()
-    
-    func route(name: String) -> Route {
-        return Route()
+    init() {
+        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.surprise.routes"), let routes = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [Route]{
+            self.routes = routes
+        }
     }
     
-    func route(prefix: String) -> [Route] {
-        return []
+    var routes: [Route] = []
+    
+    func route(name: String) -> Route? {
+        for route in routes {
+            if name == route.name {
+                return route
+            }
+        }
+        return nil
     }
     
+    func routes(prefix: String) -> [Route] {
+        return self.routes.filter { (route) -> Bool in
+            return route.name.contains(prefix)
+        }
+    }
+    
+    @discardableResult
     func addRoute(route: Route) -> Bool {
-        return true
+        routes.append(route)
+        return archive()
+    }
+    
+    func archive() -> Bool {
+        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.surprise.routes") {
+            return NSKeyedArchiver.archiveRootObject(routes, toFile: file)
+        }
+        return false
     }
 }

@@ -16,6 +16,11 @@
 		8A86E3F71F84B191007DB730 /* RouteCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3F61F84B191007DB730 /* RouteCacheService.swift */; };
 		8A86E3FA1F86704C007DB730 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3F91F86704C007DB730 /* UIFontExtension.swift */; };
 		8A86E3FB1F867156007DB730 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3F81F866FC2007DB730 /* Inceptionv3.mlmodel */; };
+		8A86E3FE1F88A14A007DB730 /* SwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A86E3FD1F88A14A007DB730 /* SwitchView.xib */; };
+		8A86E4001F88A15E007DB730 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3FF1F88A15E007DB730 /* SwitchView.swift */; };
+		8A86E4021F88D69C007DB730 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E4011F88D69C007DB730 /* DashedBorderView.swift */; };
+		8A86E4041F89A2A6007DB730 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E4031F89A2A5007DB730 /* Constant.swift */; };
+		8A86E4061F89AC29007DB730 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E4051F89AC29007DB730 /* StringExtension.swift */; };
 		8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7716E1F77771B00F2683C /* AppDelegate.swift */; };
 		8AF771711F77771B00F2683C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF771701F77771B00F2683C /* art.scnassets */; };
 		8AF771731F77771B00F2683C /* StoreSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF771721F77771B00F2683C /* StoreSceneViewController.swift */; };
@@ -55,6 +60,11 @@
 		8A86E3F61F84B191007DB730 /* RouteCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCacheService.swift; sourceTree = "<group>"; };
 		8A86E3F81F866FC2007DB730 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		8A86E3F91F86704C007DB730 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		8A86E3FD1F88A14A007DB730 /* SwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchView.xib; sourceTree = "<group>"; };
+		8A86E3FF1F88A15E007DB730 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		8A86E4011F88D69C007DB730 /* DashedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedBorderView.swift; sourceTree = "<group>"; };
+		8A86E4031F89A2A5007DB730 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		8A86E4051F89AC29007DB730 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		8AF7716B1F77771B00F2683C /* Surprise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surprise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF7716E1F77771B00F2683C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF771701F77771B00F2683C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -126,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8A86E3F01F849DB6007DB730 /* Route.swift */,
+				8A86E4031F89A2A5007DB730 /* Constant.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -136,6 +147,7 @@
 				8A86E3EC1F84957B007DB730 /* SCNVector3Extensions.swift */,
 				8A86E3EE1F849824007DB730 /* UIColorExtension.swift */,
 				8A86E3F91F86704C007DB730 /* UIFontExtension.swift */,
+				8A86E4051F89AC29007DB730 /* StringExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -156,6 +168,16 @@
 				8A86E3F61F84B191007DB730 /* RouteCacheService.swift */,
 			);
 			path = service;
+			sourceTree = "<group>";
+		};
+		8A86E3FC1F88A11C007DB730 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8A86E3FD1F88A14A007DB730 /* SwitchView.xib */,
+				8A86E3FF1F88A15E007DB730 /* SwitchView.swift */,
+				8A86E4011F88D69C007DB730 /* DashedBorderView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		8AF771621F77771B00F2683C = {
@@ -183,6 +205,7 @@
 		8AF7716D1F77771B00F2683C /* Surprise */ = {
 			isa = PBXGroup;
 			children = (
+				8A86E3FC1F88A11C007DB730 /* view */,
 				8A86E3F51F84B17B007DB730 /* service */,
 				8A86E3F41F84B166007DB730 /* viewcontroller */,
 				8A86E3F31F84B159007DB730 /* extension */,
@@ -330,6 +353,7 @@
 				8AF7717B1F77771B00F2683C /* LaunchScreen.storyboard in Resources */,
 				8AF771781F77771B00F2683C /* Assets.xcassets in Resources */,
 				8AF771761F77771B00F2683C /* Main.storyboard in Resources */,
+				8A86E3FE1F88A14A007DB730 /* SwitchView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,12 +427,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF771731F77771B00F2683C /* StoreSceneViewController.swift in Sources */,
+				8A86E4001F88A15E007DB730 /* SwitchView.swift in Sources */,
 				8A86E3FA1F86704C007DB730 /* UIFontExtension.swift in Sources */,
+				8A86E4021F88D69C007DB730 /* DashedBorderView.swift in Sources */,
 				8A86E3EB1F77F442007DB730 /* SearchSceneViewController.swift in Sources */,
 				8A86E3F11F849DB6007DB730 /* Route.swift in Sources */,
 				8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */,
 				8A86E3FB1F867156007DB730 /* Inceptionv3.mlmodel in Sources */,
+				8A86E4061F89AC29007DB730 /* StringExtension.swift in Sources */,
 				8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */,
+				8A86E4041F89A2A6007DB730 /* Constant.swift in Sources */,
 				8A86E3ED1F84957C007DB730 /* SCNVector3Extensions.swift in Sources */,
 				8A86E3F71F84B191007DB730 /* RouteCacheService.swift in Sources */,
 				8A86E3EF1F849824007DB730 /* UIColorExtension.swift in Sources */,

@@ -7,7 +7,6 @@ target ‘Surprise’ do
   pod 'SnapKit', '~> 4.0.0'
   pod 'Material'
   pod 'IQKeyboardManager'
-  pod 'RealmSwift'
   pod 'SVProgressHUD'
 end
 

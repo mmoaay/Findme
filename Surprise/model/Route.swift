@@ -8,29 +8,38 @@
 
 import Foundation
 import UIKit
-import RealmSwift
+import SceneKit
 
-protocol Infomationable {
-    var title: String { get }
-}
-
-enum NodeType{
-    case start(info: Infomationable)
-    case object(info: Infomationable)
-    case route
-    
-    func title() -> String {
-        return ""
+class Route: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool {
+        return true
     }
-}
-
-class Node: Object {
-}
-
-class Route: Object {
-    @objc dynamic var color: UIColor = UIColor.white
-    let dogs = List<Node>()
-    let objects = List<Node>()
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.time, forKey: "time")
+        aCoder.encode(self.scene, forKey: "scene")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.scene = aDecoder.decodeObject(forKey: "scene") as! SCNScene
+        self.time = aDecoder.decodeObject(forKey: "time") as! NSDate
+    }
+    
+    init(name: String, time: NSDate, scene: SCNScene) {
+        self.name = name
+        self.scene = scene
+        self.time = time
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    var name = ""
+    var time = NSDate()
+    var scene = SCNScene()
 }
 
 

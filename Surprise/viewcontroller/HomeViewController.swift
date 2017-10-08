@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import SceneKit
 
 extension HomeViewController: UISearchResultsUpdating
 {
     func updateSearchResults(for searchController: UISearchController) {
-        searchedRoutes = self.routes.filter { (name, time) -> Bool in
-            return name.contains(searchController.searchBar.text!)
-        }
+        searchedRoutes =  RouteCacheService.shared.routes(prefix: searchController.searchBar.text!)
     }
 }
 
 extension HomeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if ("from_home_to_search" == segue.identifier) {
+            if let destination = segue.destination as? SearchSceneViewController, let item = sender as? Route {
+                destination.route = item
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "from_home_to_search", sender: nil)
+        var item = Route(name: "", time: NSDate(), scene: SCNScene())
+        if searchController.isActive {
+            item = searchedRoutes[indexPath.row];
+        } else {
+            item = routes[indexPath.row]
+        }
+        performSegue(withIdentifier: "from_home_to_search", sender: item)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +52,7 @@ extension HomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var item = (name: "", time: "")
+        var item = Route()
         if searchController.isActive {
             item = searchedRoutes[indexPath.row];
         } else {
@@ -47,7 +60,7 @@ extension HomeViewController {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath)
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = item.time
+        cell.detailTextLabel?.text = item.time.description
         
         return cell
     }
@@ -64,9 +77,9 @@ class HomeViewController: UITableViewController {
         return controller
     })()
     
-    lazy var routes: [(name: String, time: String)] = [("Camera", "Sony, Added at 2017.07.15"),("Mobile", "Apple, Added at 2017.07.15"),("Watch", "Apple, Added at 2017.07.15"),("Charge", "China, Added at 2017.07.15")]
+    lazy var routes: [Route] = RouteCacheService.shared.routes
     
-    var searchedRoutes: [(name: String, time: String)] = [(name: String, time: String)](){
+    var searchedRoutes: [Route] = [Route](){
         didSet {
             self.tableView.reloadData()
         }
@@ -79,6 +92,13 @@ class HomeViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        routes = RouteCacheService.shared.routes
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -100,28 +100,58 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3t-2j-VPA">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-qW-LhO" customClass="SwitchView" customModule="Surprise" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
+                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the surprise" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh">
+                                        <rect key="frame" x="10" y="10" width="355" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="MbR-GM-GOZ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="s59-qY-YVh" secondAttribute="trailing" constant="10" id="7IM-iw-7TF"/>
+                                    <constraint firstItem="s59-qY-YVh" firstAttribute="top" secondItem="VlZ-nq-5rd" secondAttribute="top" constant="10" id="9mH-do-RTB"/>
+                                    <constraint firstItem="s59-qY-YVh" firstAttribute="leading" secondItem="VlZ-nq-5rd" secondAttribute="leading" constant="10" id="VGp-JK-Fdg"/>
+                                    <constraint firstAttribute="bottom" secondItem="s59-qY-YVh" secondAttribute="bottom" constant="10" id="grJ-8k-b5r"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VlZ-nq-5rd" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="3B5-7m-Q5M"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="bottom" secondItem="dQ7-Fh-sIq" secondAttribute="bottom" id="7SJ-Zt-FZG"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="VlZ-nq-5rd" secondAttribute="bottom" id="8YU-w0-ZJf"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="zP1-qW-LhO" secondAttribute="trailing" id="BXL-g5-NMI"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="zP1-qW-LhO" secondAttribute="bottom" id="D4a-fi-80K"/>
+                            <constraint firstItem="zP1-qW-LhO" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="Fsk-bO-f98"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="VlZ-nq-5rd" secondAttribute="trailing" id="kET-M1-ILf"/>
+                            <constraint firstItem="zP1-qW-LhO" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="kZW-ef-fMa"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add surprise" id="hHx-38-B6a">
-                        <barButtonItem key="rightBarButtonItem" title="Start" id="AB1-yM-mtK">
-                            <connections>
-                                <action selector="switchPressed:" destination="BV1-FR-VrT" id="SEH-Sj-cS8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add surprise" largeTitleDisplayMode="never" id="hHx-38-B6a"/>
                     <connections>
+                        <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
+                        <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
                         <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
-                        <outlet property="switchBarButtonItem" destination="AB1-yM-mtK" id="zaz-Mh-ZGr"/>
+                        <outlet property="switchView" destination="zP1-qW-LhO" id="oV0-io-G6l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -137,21 +167,31 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-eh-Qvi">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCY-c5-ddF" customClass="SwitchView" customModule="Surprise" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VCY-c5-ddF" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="4hw-vc-lRn"/>
                             <constraint firstItem="VCZ-eh-Qvi" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="Sbk-Jt-TN0"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCY-c5-ddF" secondAttribute="trailing" id="X6q-4i-3Sf"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCZ-eh-Qvi" secondAttribute="trailing" id="YMH-sG-XgJ"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCY-c5-ddF" secondAttribute="bottom" id="giJ-JC-fzg"/>
+                            <constraint firstItem="VCY-c5-ddF" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="h2C-VS-EmP"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCZ-eh-Qvi" secondAttribute="bottom" id="uGk-c1-qnr"/>
                             <constraint firstItem="VCZ-eh-Qvi" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="xpN-cr-eyE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Get the surprise" id="qB4-U6-SYS"/>
+                    <navigationItem key="navigationItem" title="Get the surprise" largeTitleDisplayMode="never" id="qB4-U6-SYS"/>
                     <connections>
                         <outlet property="sceneView" destination="VCZ-eh-Qvi" id="tfE-5r-tIn"/>
+                        <outlet property="switchView" destination="VCY-c5-ddF" id="NfO-Jq-6KT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnf-6q-vRq" sceneMemberID="firstResponder"/>

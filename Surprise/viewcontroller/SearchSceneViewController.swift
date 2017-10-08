@@ -10,9 +10,33 @@ import UIKit
 import SceneKit
 import ARKit
 
+extension SearchSceneViewController: SwitchViewDelegate {
+    func switched(status: OperationStatus) {
+        switch status {
+        case .locating:
+            // Create a session configuration
+            let configuration = ARWorldTrackingConfiguration()
+            // Run the view's session
+            sceneView.session.run(configuration)
+            break
+        case .going:
+            self.sceneView.scene = self.route.scene
+            break
+        case .done:
+            self.navigationController?.popViewController(animated: true)
+            break
+        default:
+            break
+        }
+    }
+}
+
 class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var switchView: SwitchView!
+    
+    var route = Route()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,26 +48,14 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Set the scene to the view
-        sceneView.scene = RouteCacheService.shared.scene
+        sceneView.scene = SCNScene()
         
         sceneView.autoenablesDefaultLighting = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         
-        // Pause the view's session
-        sceneView.session.pause()
+        switchView.type = .search
+        switchView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
