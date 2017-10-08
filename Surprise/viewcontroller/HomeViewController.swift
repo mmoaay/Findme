@@ -45,9 +45,9 @@ extension HomeViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if searchController.isActive {
-            return "Searched Objects"
+            return "Searched surprises"
         } else {
-            return "Stored Objects"
+            return "All the surprises"
         }
     }
     
