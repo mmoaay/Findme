@@ -40,6 +40,7 @@ class Route: NSObject, NSSecureCoding {
     var identity:Int64 = Int64(Date().timeIntervalSince1970)
     var name = ""
     var scene = SCNScene()
+    var header = UIImage()
 }
 
 

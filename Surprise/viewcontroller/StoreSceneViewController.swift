@@ -19,6 +19,9 @@ extension StoreSceneViewController: SwitchViewDelegate {
         self.status = status
         switch status {
         case .locating:
+            captureObject.stopRunning()
+            previewView.isHidden = true
+            
             // Create a session configuration
             let configuration = ARWorldTrackingConfiguration()
             // Run the view's session
@@ -105,16 +108,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         switchView.delegate = self
         
         captureObject = PhotoCaptureObject(previewView: previewView, target: self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         captureObject.startRunning()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        captureObject.stopRunning()
     }
     
     override func didReceiveMemoryWarning() {

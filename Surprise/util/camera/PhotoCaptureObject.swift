@@ -34,6 +34,8 @@ class PhotoCaptureObject: NSObject {
     init(previewView: PreviewView, target: UIViewController) {
         super.init()
         
+        previewView.session = self.session
+        
         self.previewView = previewView
         self.target = target
         

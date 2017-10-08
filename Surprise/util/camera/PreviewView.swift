@@ -17,7 +17,7 @@ class PreviewView: UIView {
         return layer
     }
 	
-	var session: AVCaptureSession? {
+	weak var session: AVCaptureSession? {
 		get {
 			return videoPreviewLayer.session
 		}
