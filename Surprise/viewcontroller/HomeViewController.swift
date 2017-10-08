@@ -64,8 +64,8 @@ extension HomeViewController {
         let timeInterval:TimeInterval = TimeInterval(item.identity)
         let date = Date(timeIntervalSince1970: timeInterval)
         let formatter = DateFormatter()
-        formatter.dateFormat = "Created at MM-dd-yyyy HH:mm:ss"
-        cell.detailTextLabel?.text = formatter.string(from: date)
+        formatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        cell.detailTextLabel?.text = "Created at " + formatter.string(from: date)
         
         return cell
     }

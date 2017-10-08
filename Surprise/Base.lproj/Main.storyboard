@@ -13,12 +13,12 @@
         <scene sceneID="Fw4-Jd-NKu">
             <objects>
                 <tableViewController id="iHB-Mh-v7M" customClass="HomeViewController" customModule="Surprise" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6U6-0m-ciB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6U6-0m-ciB" customClass="TableView" customModule="Material">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCellIdentifier" textLabel="Vw9-6z-RsI" detailTextLabel="C16-q4-lbC" style="IBUITableViewCellStyleSubtitle" id="jVG-LM-mxC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCellIdentifier" textLabel="Vw9-6z-RsI" detailTextLabel="C16-q4-lbC" style="IBUITableViewCellStyleSubtitle" id="jVG-LM-mxC" customClass="TableViewCell" customModule="Material">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jVG-LM-mxC" id="F5L-f1-04d">
@@ -103,6 +103,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-S2-jUG" customClass="PreviewView" customModule="Surprise" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-qW-LhO" customClass="SwitchView" customModule="Surprise" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -110,7 +114,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the surprise" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the surprise" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh" customClass="TextField" customModule="Material">
                                         <rect key="frame" x="10" y="10" width="355" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -140,9 +144,13 @@
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="Fsk-bO-f98"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
+                            <constraint firstItem="G5F-S2-jUG" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="gBA-K1-CbR"/>
+                            <constraint firstItem="G5F-S2-jUG" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="hXK-Rf-aNG"/>
                             <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="VlZ-nq-5rd" secondAttribute="trailing" id="kET-M1-ILf"/>
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="kZW-ef-fMa"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="G5F-S2-jUG" secondAttribute="bottom" id="rH8-VV-5T0"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="G5F-S2-jUG" secondAttribute="trailing" id="zk5-tr-81R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
@@ -150,6 +158,7 @@
                     <connections>
                         <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
                         <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
+                        <outlet property="previewView" destination="G5F-S2-jUG" id="AIe-y9-2np"/>
                         <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
                         <outlet property="switchView" destination="zP1-qW-LhO" id="oV0-io-G6l"/>
                     </connections>

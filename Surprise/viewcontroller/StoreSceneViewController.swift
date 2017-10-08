@@ -73,12 +73,15 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
     
+    @IBOutlet weak var previewView: PreviewView!
     var status:OperationStatus = .locating
     
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     
     var last: SCNVector3? = nil
+    
+    var captureObject:PhotoCaptureObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +103,18 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         switchView.type = .store
         switchView.delegate = self
+        
+        captureObject = PhotoCaptureObject(previewView: previewView, target: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        captureObject.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureObject.stopRunning()
     }
     
     override func didReceiveMemoryWarning() {
