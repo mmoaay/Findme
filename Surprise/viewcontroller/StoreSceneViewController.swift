@@ -37,23 +37,34 @@ extension StoreSceneViewController: SwitchViewDelegate {
             
             self.nameView.isHidden = false
             self.nameTextField.becomeFirstResponder()
+            break
         case .save:
-            
-            let route = Route(name: nameTextField.text!, time: NSDate(), scene: self.sceneView.scene)
-            if true == RouteCacheService.shared.addRoute(route: route) {
-                self.navigationController?.popViewController(animated: true)
-                
-                self.nameView.isHidden = true
-                self.nameTextField.resignFirstResponder()
+            if let name = nameTextField.text {
+                if false == name.isEmpty {
+                    let route = Route(name: name, scene: self.sceneView.scene)
+                    if true == RouteCacheService.shared.addRoute(route: route) {
+                        self.navigationController?.popViewController(animated: true)
+                        
+                        self.nameView.isHidden = true
+                        self.nameTextField.resignFirstResponder()
+                    } else {
+                        SVProgressHUD.showError(withStatus: "Save failed, try again")
+                        return
+                    }
+                } else {
+                    SVProgressHUD.showError(withStatus: "Please input the name of the suprise")
+                    return
+                }
             } else {
-                print("Save failed")
+                SVProgressHUD.showError(withStatus: "Please input the name of the suprise")
+                return
             }
-            
-            
             break
         default:
             break
         }
+        
+        self.switchView.status = status.next(type: self.switchView.type)
     }
 }
 

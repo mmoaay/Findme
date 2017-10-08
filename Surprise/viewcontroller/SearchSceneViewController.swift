@@ -10,6 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
+extension SearchSceneViewController {
+}
+
 extension SearchSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
         switch status {
@@ -28,6 +31,8 @@ extension SearchSceneViewController: SwitchViewDelegate {
         default:
             break
         }
+        
+        self.switchView.status = status.next(type: self.switchView.type)
     }
 }
 

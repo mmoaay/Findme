@@ -107,7 +107,13 @@ class SwitchView: UIView {
     
     @IBOutlet weak var switchButton: UIButton!
     
-    var status: OperationStatus = .locating;
+    var status: OperationStatus = .locating {
+        didSet {
+            contentLabel.text = status.title(type: self.type)
+            switchButton.setTitle(status.buttonTitle(type: self.type), for: .normal)
+            switchButton.backgroundColor = status.buttonColor()
+        }
+    }
     
     var type: OperationType = .store {
         didSet {
@@ -140,10 +146,6 @@ class SwitchView: UIView {
     }
 
     @IBAction func switchPressed(_ sender: Any) {
-        if let delegate = delegate {
-            delegate.switched(status: status)
-        }
-        
         if .locating == status {
             self.switchButton.isEnabled = false
             var count = 5
@@ -159,9 +161,8 @@ class SwitchView: UIView {
             })
         }
         
-        status = status.next(type: self.type)
-        contentLabel.text = status.title(type: self.type)
-        switchButton.setTitle(status.buttonTitle(type: self.type), for: .normal)
-        switchButton.backgroundColor = status.buttonColor()
+        if let delegate = delegate {
+            delegate.switched(status: status)
+        }
     }
 }

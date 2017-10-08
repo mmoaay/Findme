@@ -13,35 +13,40 @@ class RouteCacheService {
     static let shared = RouteCacheService()
     
     init() {
-        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.surprise.routes"), let routes = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [Route]{
+        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.surprise.routes"), let routes = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [String : Route]{
             self.routes = routes
         }
     }
     
-    var routes: [Route] = []
+    var routes: [String : Route] = [ : ]
     
-    func route(name: String) -> Route? {
-        for route in routes {
-            if name == route.name {
-                return route
-            }
-        }
-        return nil
+    func route(identity: Int64) -> Route? {
+        return routes[String(identity)];
     }
     
     func routes(prefix: String) -> [Route] {
-        return self.routes.filter { (route) -> Bool in
-            return route.name.contains(prefix)
+        return Array(self.routes.values).filter { (route) -> Bool in
+            return route.name.lowercased().contains(prefix.lowercased())
         }
+    }
+    
+    func allRoutes() -> [Route] {
+        return Array(self.routes.values)
     }
     
     @discardableResult
     func addRoute(route: Route) -> Bool {
-        routes.append(route)
+        routes[String(route.identity)] = route
         return archive()
     }
     
-    func archive() -> Bool {
+    @discardableResult
+    func delRoute(route: Route) -> Bool {
+        routes.removeValue(forKey: String(route.identity))
+        return archive()
+    }
+    
+    private func archive() -> Bool {
         if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.surprise.routes") {
             return NSKeyedArchiver.archiveRootObject(routes, toFile: file)
         }

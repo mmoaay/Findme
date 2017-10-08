@@ -26,7 +26,7 @@ extension HomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var item = Route(name: "", time: NSDate(), scene: SCNScene())
+        var item = Route()
         if searchController.isActive {
             item = searchedRoutes[indexPath.row];
         } else {
@@ -60,9 +60,32 @@ extension HomeViewController {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath)
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = item.time.description
+        
+        let timeInterval:TimeInterval = TimeInterval(item.identity)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "Created at MM-dd-yyyy HH:mm:ss"
+        cell.detailTextLabel?.text = formatter.string(from: date)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            var item = Route()
+            if searchController.isActive {
+                item = searchedRoutes[indexPath.row];
+            } else {
+                item = routes[indexPath.row]
+            }
+            RouteCacheService.shared.delRoute(route: item)
+            self.routes = RouteCacheService.shared.allRoutes()
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -74,10 +97,15 @@ class HomeViewController: UITableViewController {
         controller.searchBar.tintColor = UIColor.white
         controller.hidesNavigationBarDuringPresentation = false
         controller.dimsBackgroundDuringPresentation = false
+
+        if let searchField = controller.searchBar.value(forKey: "_searchField") as? UITextField {
+            searchField.tintColor = UIColor.white
+            searchField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+        }
         return controller
     })()
     
-    lazy var routes: [Route] = RouteCacheService.shared.routes
+    lazy var routes: [Route] = RouteCacheService.shared.allRoutes()
     
     var searchedRoutes: [Route] = [Route](){
         didSet {
@@ -95,7 +123,7 @@ class HomeViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        routes = RouteCacheService.shared.routes
+        routes = RouteCacheService.shared.allRoutes()
         self.tableView.reloadData()
     }
     

@@ -16,29 +16,29 @@ class Route: NSObject, NSSecureCoding {
     }
     
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.identity, forKey: "identity")
         aCoder.encode(self.name, forKey: "name")
-        aCoder.encode(self.time, forKey: "time")
         aCoder.encode(self.scene, forKey: "scene")
     }
     
     required init(coder aDecoder: NSCoder) {
+        self.identity = aDecoder.decodeInt64(forKey: "identity")
         self.name = aDecoder.decodeObject(forKey: "name") as! String
         self.scene = aDecoder.decodeObject(forKey: "scene") as! SCNScene
-        self.time = aDecoder.decodeObject(forKey: "time") as! NSDate
     }
     
-    init(name: String, time: NSDate, scene: SCNScene) {
+    init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, scene: SCNScene) {
         self.name = name
         self.scene = scene
-        self.time = time
+        self.identity = identity
     }
     
     override init() {
         super.init()
     }
     
+    var identity:Int64 = Int64(Date().timeIntervalSince1970)
     var name = ""
-    var time = NSDate()
     var scene = SCNScene()
 }
 
