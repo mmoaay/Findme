@@ -58,14 +58,8 @@ extension HomeViewController {
         } else {
             item = routes[indexPath.row]
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath)
-        cell.textLabel?.text = item.name
-        
-        let timeInterval:TimeInterval = TimeInterval(item.identity)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
-        cell.detailTextLabel?.text = "Created at " + formatter.string(from: date)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellIdentifier", for: indexPath) as! HomeTableViewCell
+        cell.setRoute(route: item)
         
         return cell
     }

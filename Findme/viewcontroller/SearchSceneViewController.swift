@@ -17,6 +17,11 @@ extension SearchSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
         switch status {
         case .locating:
+            imageView.isHidden = true
+            
+            captureObject.stopRunning()
+            previewView.isHidden = true
+            
             // Create a session configuration
             let configuration = ARWorldTrackingConfiguration()
             // Run the view's session
@@ -40,8 +45,12 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
+    @IBOutlet weak var previewView: PreviewView!
+    @IBOutlet weak var imageView: UIImageView!
     
     var route = Route()
+    
+    var captureObject:CaptureObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +70,12 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         switchView.type = .search
         switchView.delegate = self
+        
+        captureObject = CaptureObject(previewView: previewView, target: self)
+        captureObject.startRunning()
+        
+        imageView.image = UIImage(data: route.image)
+        
     }
     
     override func didReceiveMemoryWarning() {

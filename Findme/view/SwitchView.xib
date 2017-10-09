@@ -23,11 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-s8-8wP" customClass="DashedBorderView" customModule="Findme" customModuleProvider="target">
-                    <rect key="frame" x="38" y="150" width="200" height="200"/>
+                    <rect key="frame" x="28" y="140" width="220" height="220"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="YIL-B0-lju"/>
-                        <constraint firstAttribute="height" constant="200" id="bSJ-Ug-Pt9"/>
+                        <constraint firstAttribute="width" constant="220" id="YIL-B0-lju"/>
+                        <constraint firstAttribute="height" constant="220" id="bSJ-Ug-Pt9"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Cj-lNK" customClass="Button" customModule="Material">

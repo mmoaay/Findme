@@ -19,12 +19,20 @@ class Route: NSObject, NSSecureCoding {
         aCoder.encode(self.identity, forKey: "identity")
         aCoder.encode(self.name, forKey: "name")
         aCoder.encode(self.scene, forKey: "scene")
+        aCoder.encode(self.image, forKey: "image")
     }
     
     required init(coder aDecoder: NSCoder) {
         self.identity = aDecoder.decodeInt64(forKey: "identity")
-        self.name = aDecoder.decodeObject(forKey: "name") as! String
-        self.scene = aDecoder.decodeObject(forKey: "scene") as! SCNScene
+        if let name = aDecoder.decodeObject(forKey: "name") as? String {
+            self.name = name
+        }
+        if let scene = aDecoder.decodeObject(forKey: "scene") as? SCNScene {
+            self.scene = scene
+        }
+        if let image = aDecoder.decodeObject(forKey: "image") as? Data {
+            self.image = image
+        }
     }
     
     init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, scene: SCNScene) {
@@ -40,7 +48,7 @@ class Route: NSObject, NSSecureCoding {
     var identity:Int64 = Int64(Date().timeIntervalSince1970)
     var name = ""
     var scene = SCNScene()
-    var header = UIImage()
+    var image = Data()
 }
 
 

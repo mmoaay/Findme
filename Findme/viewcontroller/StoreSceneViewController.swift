@@ -19,13 +19,17 @@ extension StoreSceneViewController: SwitchViewDelegate {
         self.status = status
         switch status {
         case .locating:
-            captureObject.stopRunning()
-            previewView.isHidden = true
-            
-            // Create a session configuration
-            let configuration = ARWorldTrackingConfiguration()
-            // Run the view's session
-            sceneView.session.run(configuration)
+            captureObject.capturePhoto(completion: { (image: Data) in
+                self.route.image = image
+                
+                self.captureObject.stopRunning()
+                self.previewView.isHidden = true
+                
+                // Create a session configuration
+                let configuration = ARWorldTrackingConfiguration()
+                // Run the view's session
+                self.sceneView.session.run(configuration)
+            })
             break
         case .done:
             if let last = self.last {
@@ -44,7 +48,8 @@ extension StoreSceneViewController: SwitchViewDelegate {
         case .save:
             if let name = nameTextField.text {
                 if false == name.isEmpty {
-                    let route = Route(name: name, scene: self.sceneView.scene)
+                    route.name = name
+                    route.scene = self.sceneView.scene
                     if true == RouteCacheService.shared.addRoute(route: route) {
                         self.navigationController?.popViewController(animated: true)
                         
@@ -66,7 +71,6 @@ extension StoreSceneViewController: SwitchViewDelegate {
         default:
             break
         }
-        
         self.switchView.status = status.next(type: self.switchView.type)
     }
 }
@@ -75,16 +79,17 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
-    
     @IBOutlet weak var previewView: PreviewView!
-    var status:OperationStatus = .locating
-    
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     
+    let route = Route()
+    
+    var status:OperationStatus = .locating
+    
     var last: SCNVector3? = nil
     
-    var captureObject:PhotoCaptureObject!
+    var captureObject:CaptureObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +112,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         switchView.type = .store
         switchView.delegate = self
         
-        captureObject = PhotoCaptureObject(previewView: previewView, target: self)
+        captureObject = CaptureObject(previewView: previewView, target: self)
         captureObject.startRunning()
     }
     

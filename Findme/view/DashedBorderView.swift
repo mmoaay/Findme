@@ -11,7 +11,7 @@ import UIKit
 class DashedBorderView: UIView {
     
     var border:CAShapeLayer!
-    var radius = 100.0 {
+    var radius = 110.0 {
         didSet {
             layoutSubviews()
         }

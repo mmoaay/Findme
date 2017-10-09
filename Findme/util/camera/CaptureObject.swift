@@ -1,5 +1,5 @@
 //
-//  PhotoCaptureObject.swift
+//  CaptureObject.swift
 //  Findme
 //
 //  Created by zhengperry on 2017/10/8.
@@ -9,7 +9,9 @@
 import UIKit
 import AVFoundation
 
-class PhotoCaptureObject: NSObject {
+typealias CaptureCompletion = (_ phone:Data) -> Void
+
+class CaptureObject: NSObject, AVCapturePhotoCaptureDelegate {
     private enum SessionSetupResult {
         case success
         case notAuthorized
@@ -22,14 +24,15 @@ class PhotoCaptureObject: NSObject {
     
     private let session = AVCaptureSession()
     
-    private let sessionQueue = DispatchQueue(label: "session queue") // Communicate with the session and other session objects on this queue.
+    private let sessionQueue = DispatchQueue(label: "session.queue") // Communicate with the session and other session objects on this queue.
     
     private var setupResult: SessionSetupResult = .success
     
     private var videoDeviceInput: AVCaptureDeviceInput!
     
     private let photoOutput = AVCapturePhotoOutput()
-    private var inProgressPhotoCaptureDelegates = [Int64: PhotoCaptureProcessor]()
+    
+    private var completion:CaptureCompletion? = nil
     
     init(previewView: PreviewView, target: UIViewController) {
         super.init()
@@ -211,7 +214,7 @@ class PhotoCaptureObject: NSObject {
         session.commitConfiguration()
     }
     
-    func capturePhoto() {
+    func capturePhoto(completion: @escaping CaptureCompletion) {
         /*
          Retrieve the video preview layer's video orientation on the main queue before
          entering the session queue. We do this to ensure UI elements are accessed on
@@ -219,6 +222,7 @@ class PhotoCaptureObject: NSObject {
          */
         sessionQueue.async {
             // Update the photo output's connection to match the video orientation of the video preview layer.
+            self.completion = completion
             
             var photoSettings = AVCapturePhotoSettings()
             // Capture HEIF photo when supported, with flash set to auto and high resolution photo enabled.
@@ -228,45 +232,33 @@ class PhotoCaptureObject: NSObject {
             }
             
             if self.videoDeviceInput.device.isFlashAvailable {
-                photoSettings.flashMode = .auto
+                photoSettings.flashMode = .off
             }
             
-            photoSettings.isHighResolutionPhotoEnabled = true
             if !photoSettings.__availablePreviewPhotoPixelFormatTypes.isEmpty {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: photoSettings.__availablePreviewPhotoPixelFormatTypes.first!]
             }
 
             photoSettings.isDepthDataDeliveryEnabled = false
             
-            // Use a separate object for the photo capture delegate to isolate each capture life cycle.
-            let photoCaptureProcessor = PhotoCaptureProcessor(with: photoSettings, willCapturePhotoAnimation: {
-                DispatchQueue.main.async {
-                    self.previewView.videoPreviewLayer.opacity = 0
-                    UIView.animate(withDuration: 0.25) {
-                        self.previewView.videoPreviewLayer.opacity = 1
-                    }
-                }
-            }, livePhotoCaptureHandler: { capturing in
-                /*
-                 Because Live Photo captures can overlap, we need to keep track of the
-                 number of in progress Live Photo captures to ensure that the
-                 Live Photo label stays visible during these captures.
-                 */
-            }, completionHandler: { photoCaptureProcessor in
-                // When the capture is complete, remove a reference to the photo capture delegate so it can be deallocated.
-                self.sessionQueue.async {
-                    self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = nil
-                }
-            }
-            )
-            
             /*
              The Photo Output keeps a weak reference to the photo capture delegate so
              we store it in an array to maintain a strong reference to this object
              until the capture is completed.
              */
-            self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = photoCaptureProcessor
-            self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureProcessor)
+            self.photoOutput.capturePhoto(with: photoSettings, delegate: self)
+        }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        DispatchQueue.main.async {
+            if let error = error {
+                print("Error capturing photo: \(error)")
+            } else {
+                if let completion = self.completion, let photo = photo.fileDataRepresentation(){
+                    completion(photo)
+                }
+            }
         }
     }
 }
