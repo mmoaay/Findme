@@ -1,8 +1,8 @@
 PODS:
   - IQKeyboardManager (5.0.3)
-  - Material (2.10.3):
-    - Material/Core (= 2.10.3)
-  - Material/Core (2.10.3)
+  - Material (2.10.4):
+    - Material/Core (= 2.10.4)
+  - Material/Core (2.10.4)
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.1)
 
@@ -14,10 +14,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: dc5b18b47e5170e4d150bb86dbee8c8a2fc48997
-  Material: 895b60e978e297dbead93a17590bea9f9fe85f0a
+  Material: b00499e2c68738173cc8a460057d084ae33828fa
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
 
-PODFILE CHECKSUM: bfbb1b29daec0b9bc805ad3e272e86440f3f4217
+PODFILE CHECKSUM: 9fd7e93ffa7e8d09c64f1af124e8429f041bb39b
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.1

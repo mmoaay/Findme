@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdt-sB-Qds">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Findme-->
+        <scene sceneID="Fw4-Jd-NKu">
+            <objects>
+                <tableViewController id="iHB-Mh-v7M" customClass="HomeViewController" customModule="Findme" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6U6-0m-ciB" customClass="TableView" customModule="Material">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCellIdentifier" textLabel="Vw9-6z-RsI" detailTextLabel="C16-q4-lbC" style="IBUITableViewCellStyleSubtitle" id="jVG-LM-mxC" customClass="TableViewCell" customModule="Material">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jVG-LM-mxC" id="F5L-f1-04d">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vw9-6z-RsI">
+                                            <rect key="frame" x="16" y="5" width="41" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Store the route to one object" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C16-q4-lbC">
+                                            <rect key="frame" x="16" y="25.5" width="163" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="iHB-Mh-v7M" id="68s-4L-Kco"/>
+                            <outlet property="delegate" destination="iHB-Mh-v7M" id="uvL-Xf-7tc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Findme" id="Jby-Cg-X1T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="t1F-gF-YIE">
+                            <connections>
+                                <segue destination="BV1-FR-VrT" kind="show" identifier="from_home_to_store" id="316-V7-HJR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="B1q-Yp-MFF" id="W3m-aO-QGk"/>
+                        <segue destination="MUc-7a-cAD" kind="show" identifier="from_home_to_search" id="7Ao-mS-xab"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3kZ-91-ijD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="B1q-Yp-MFF">
+                    <connections>
+                        <outlet property="delegate" destination="iHB-Mh-v7M" id="1xf-Dv-usX"/>
+                        <outlet property="searchContentsController" destination="iHB-Mh-v7M" id="lia-lJ-y0M"/>
+                        <outlet property="searchResultsDataSource" destination="iHB-Mh-v7M" id="KcK-lY-duA"/>
+                        <outlet property="searchResultsDelegate" destination="iHB-Mh-v7M" id="xyp-Zu-Fsh"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-767" y="123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JDS-6Q-5Na">
+            <objects>
+                <navigationController id="gdt-sB-Qds" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Rcz-sh-soT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.27058823529411763" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iHB-Mh-v7M" kind="relationship" relationship="rootViewController" id="5Ml-d7-ea1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eM0-3R-KqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1719" y="123"/>
+        </scene>
+        <!--Save me-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="StoreSceneViewController" customModule="Findme" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zcB-V8-fbS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3t-2j-VPA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-S2-jUG" customClass="PreviewView" customModule="Findme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-qW-LhO" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
+                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the routes" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh" customClass="TextField" customModule="Material">
+                                        <rect key="frame" x="10" y="10" width="355" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="MbR-GM-GOZ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="s59-qY-YVh" secondAttribute="trailing" constant="10" id="7IM-iw-7TF"/>
+                                    <constraint firstItem="s59-qY-YVh" firstAttribute="top" secondItem="VlZ-nq-5rd" secondAttribute="top" constant="10" id="9mH-do-RTB"/>
+                                    <constraint firstItem="s59-qY-YVh" firstAttribute="leading" secondItem="VlZ-nq-5rd" secondAttribute="leading" constant="10" id="VGp-JK-Fdg"/>
+                                    <constraint firstAttribute="bottom" secondItem="s59-qY-YVh" secondAttribute="bottom" constant="10" id="grJ-8k-b5r"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VlZ-nq-5rd" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="3B5-7m-Q5M"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="bottom" secondItem="dQ7-Fh-sIq" secondAttribute="bottom" id="7SJ-Zt-FZG"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="VlZ-nq-5rd" secondAttribute="bottom" id="8YU-w0-ZJf"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="zP1-qW-LhO" secondAttribute="trailing" id="BXL-g5-NMI"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="zP1-qW-LhO" secondAttribute="bottom" id="D4a-fi-80K"/>
+                            <constraint firstItem="zP1-qW-LhO" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="Fsk-bO-f98"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
+                            <constraint firstItem="G5F-S2-jUG" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="gBA-K1-CbR"/>
+                            <constraint firstItem="G5F-S2-jUG" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="hXK-Rf-aNG"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="VlZ-nq-5rd" secondAttribute="trailing" id="kET-M1-ILf"/>
+                            <constraint firstItem="zP1-qW-LhO" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="kZW-ef-fMa"/>
+                            <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="G5F-S2-jUG" secondAttribute="bottom" id="rH8-VV-5T0"/>
+                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="G5F-S2-jUG" secondAttribute="trailing" id="zk5-tr-81R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Save me" largeTitleDisplayMode="never" id="hHx-38-B6a"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
+                        <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
+                        <outlet property="previewView" destination="G5F-S2-jUG" id="AIe-y9-2np"/>
+                        <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
+                        <outlet property="switchView" destination="zP1-qW-LhO" id="oV0-io-G6l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="332" y="-278"/>
+        </scene>
+        <!--Find me-->
+        <scene sceneID="lwo-aJ-5zI">
+            <objects>
+                <viewController id="MUc-7a-cAD" customClass="SearchSceneViewController" customModule="Findme" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTd-0u-5DH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-eh-Qvi">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCY-c5-ddF" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VCY-c5-ddF" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="4hw-vc-lRn"/>
+                            <constraint firstItem="VCZ-eh-Qvi" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="Sbk-Jt-TN0"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCY-c5-ddF" secondAttribute="trailing" id="X6q-4i-3Sf"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCZ-eh-Qvi" secondAttribute="trailing" id="YMH-sG-XgJ"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCY-c5-ddF" secondAttribute="bottom" id="giJ-JC-fzg"/>
+                            <constraint firstItem="VCY-c5-ddF" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="h2C-VS-EmP"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCZ-eh-Qvi" secondAttribute="bottom" id="uGk-c1-qnr"/>
+                            <constraint firstItem="VCZ-eh-Qvi" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="xpN-cr-eyE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find me" largeTitleDisplayMode="never" id="qB4-U6-SYS"/>
+                    <connections>
+                        <outlet property="sceneView" destination="VCZ-eh-Qvi" id="tfE-5r-tIn"/>
+                        <outlet property="switchView" destination="VCY-c5-ddF" id="NfO-Jq-6KT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnf-6q-vRq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="332" y="504"/>
+        </scene>
+    </scenes>
+</document>

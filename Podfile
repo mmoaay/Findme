@@ -3,7 +3,7 @@
 platform :ios, '8.0'
 use_frameworks!
 
-target ‘Surprise’ do
+target ‘Findme’ do
   pod 'SnapKit', '~> 4.0.0'
   pod 'Material'
   pod 'IQKeyboardManager'
