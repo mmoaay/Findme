@@ -8,5 +8,7 @@ target ‘Findme’ do
   pod 'Material'
   pod 'IQKeyboardManager'
   pod 'SVProgressHUD'
+  pod 'SwiftLocation'
+  pod 'Sparrow/Modules/RequestPermission', :git => 'https://github.com/IvanVorobei/Sparrow.git'
 end
 

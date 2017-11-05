@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import Sparrow
 
 extension HomeViewController: UISearchResultsUpdating
 {
@@ -112,6 +113,8 @@ class HomeViewController: UITableViewController {
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = true
         // Do any additional setup after loading the view.
+        
+        SPRequestPermission.dialog.interactive.present(on: self, with: [.camera, .locationAlways])
     }
 
     override func viewWillAppear(_ animated: Bool) {
