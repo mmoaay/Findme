@@ -8,7 +8,8 @@
 
 import UIKit
 import SceneKit
-import Sparrow
+import SwiftLocation
+//import Sparrow
 
 extension HomeViewController: UISearchResultsUpdating
 {
@@ -114,7 +115,9 @@ class HomeViewController: UITableViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = true
         // Do any additional setup after loading the view.
         
-        SPRequestPermission.dialog.interactive.present(on: self, with: [.camera, .locationAlways])
+//        SPRequestPermission.dialog.interactive.present(on: self, with: [.camera, .locationAlways])
+        
+        Locator.requestAuthorizationIfNeeded(.always)
     }
 
     override func viewWillAppear(_ animated: Bool) {

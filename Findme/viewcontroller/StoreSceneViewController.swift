@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import SVProgressHUD
+import SwiftLocation
 
 import CoreML
 import Vision
@@ -24,6 +25,12 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 
                 self.captureObject.stopRunning()
                 self.previewView.isHidden = true
+                
+                Locator.subscribePosition(accuracy: .room, onUpdate: { (loc) -> (Void) in
+                    print("New location received: \(loc)")
+                }, onFail: { (err, loc) -> (Void) in
+                    print("Failed with error: \(err)")
+                })
                 
                 // Create a session configuration
                 let configuration = ARWorldTrackingConfiguration()

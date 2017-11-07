@@ -1,6 +1,6 @@
 # Uncomment this line to define a global platform for your project
 
-platform :ios, '8.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target ‘Findme’ do
@@ -8,7 +8,7 @@ target ‘Findme’ do
   pod 'Material'
   pod 'IQKeyboardManager'
   pod 'SVProgressHUD'
-  pod 'SwiftLocation'
-  pod 'Sparrow/Modules/RequestPermission', :git => 'https://github.com/IvanVorobei/Sparrow.git'
+  pod 'SwiftLocation', '3.0.1-beta'
+#  pod 'Sparrow/Modules/RequestPermission', :git => 'https://github.com/IvanVorobei/Sparrow.git'
 end
 
