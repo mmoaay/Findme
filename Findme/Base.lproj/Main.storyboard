@@ -148,10 +148,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-S2-jUG" customClass="PreviewView" customModule="Findme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-qW-LhO" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SDb-88-R1J" appends="YES" id="HQ9-lB-fwn"/>
+                                </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
@@ -206,6 +211,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SDb-88-R1J">
+                    <connections>
+                        <action selector="focus:" destination="BV1-FR-VrT" id="FZd-Es-x3i"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="332" y="-278"/>
         </scene>
@@ -231,6 +241,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCY-c5-ddF" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3OP-nX-SYf" appends="YES" id="V0e-cv-vBh"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -265,6 +279,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnf-6q-vRq" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3OP-nX-SYf">
+                    <connections>
+                        <action selector="focus:" destination="MUc-7a-cAD" id="zam-qh-Ux4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="332" y="504"/>
         </scene>

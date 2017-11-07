@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SceneKit
+import CoreLocation
 
 class Route: NSObject, NSSecureCoding {
     static var supportsSecureCoding: Bool {
@@ -20,6 +21,7 @@ class Route: NSObject, NSSecureCoding {
         aCoder.encode(self.name, forKey: "name")
         aCoder.encode(self.scene, forKey: "scene")
         aCoder.encode(self.image, forKey: "image")
+        aCoder.encode(self.origin, forKey: "origin")
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -33,12 +35,16 @@ class Route: NSObject, NSSecureCoding {
         if let image = aDecoder.decodeObject(forKey: "image") as? Data {
             self.image = image
         }
+        if let origin = aDecoder.decodeObject(forKey: "origin") as? CLLocation {
+            self.origin = origin
+        }
     }
     
-    init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, scene: SCNScene) {
+    init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, scene: SCNScene, origin:CLLocation) {
         self.name = name
         self.scene = scene
         self.identity = identity
+        self.origin = origin
     }
     
     override init() {
@@ -49,6 +55,7 @@ class Route: NSObject, NSSecureCoding {
     var name = ""
     var scene = SCNScene()
     var image = Data()
+    var origin = CLLocation()
 }
 
 

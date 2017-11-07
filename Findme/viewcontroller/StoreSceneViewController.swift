@@ -21,22 +21,22 @@ extension StoreSceneViewController: SwitchViewDelegate {
         switch status {
         case .locating:
             captureObject.capturePhoto(completion: { (image: Data) in
-                self.route.image = image
-                
-                self.captureObject.stopRunning()
-                self.previewView.isHidden = true
-                
-                Locator.subscribePosition(accuracy: .room, onUpdate: { (loc) -> (Void) in
-                    print("New location received: \(loc)")
-                }, onFail: { (err, loc) -> (Void) in
-                    print("Failed with error: \(err)")
-                })
-                
-                // Create a session configuration
-                let configuration = ARWorldTrackingConfiguration()
-                configuration.worldAlignment = .gravityAndHeading
-                // Run the view's session
-                self.sceneView.session.run(configuration)
+//                Locator.currentPosition(accuracy: .room, onSuccess: { (loc) -> (Void) in
+//                    self.route.origin = loc
+                    self.route.image = image
+                    self.previewView.isHidden = true
+                    self.captureObject.stopRunning()
+                    
+                    // Create a session configuration
+                    let configuration = ARWorldTrackingConfiguration()
+                    configuration.worldAlignment = .gravityAndHeading
+                    // Run the view's session
+                    self.sceneView.session.run(configuration)
+                    
+//                    self.switchView.status = status.next(type: self.switchView.type)
+//                }, onFail: { (err, loc) -> (Void) in
+//                    print("Failed with error: \(err)")
+//                })
             })
             break
         case .done:
@@ -68,11 +68,11 @@ extension StoreSceneViewController: SwitchViewDelegate {
                         return
                     }
                 } else {
-                    SVProgressHUD.showError(withStatus: "Please input the name of the suprise")
+                    SVProgressHUD.showError(withStatus: "Please input the name of the route")
                     return
                 }
             } else {
-                SVProgressHUD.showError(withStatus: "Please input the name of the suprise")
+                SVProgressHUD.showError(withStatus: "Please input the name of the route")
                 return
             }
             break
@@ -106,7 +106,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+//        sceneView.showsStatistics = true
         
         // Create a new scene
         let scene = SCNScene()
@@ -116,12 +116,17 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.autoenablesDefaultLighting = true
         
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         switchView.type = .store
         switchView.delegate = self
         
         captureObject = CaptureObject(previewView: previewView, target: self)
         captureObject.startRunning()
+    }
+    
+    @IBAction func focus(_ gestureRecognizer: UITapGestureRecognizer) {
+        let devicePoint = self.previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view))
+        self.captureObject.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
     }
     
     override func didReceiveMemoryWarning() {

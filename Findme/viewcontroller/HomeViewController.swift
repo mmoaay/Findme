@@ -117,7 +117,7 @@ class HomeViewController: UITableViewController {
         
 //        SPRequestPermission.dialog.interactive.present(on: self, with: [.camera, .locationAlways])
         
-        Locator.requestAuthorizationIfNeeded(.always)
+        Locator.requestAuthorizationIfNeeded(.whenInUse)
     }
 
     override func viewWillAppear(_ animated: Bool) {

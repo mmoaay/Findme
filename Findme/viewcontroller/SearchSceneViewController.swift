@@ -60,14 +60,14 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+//        sceneView.showsStatistics = true
         
         // Set the scene to the view
         sceneView.scene = SCNScene()
         
         sceneView.autoenablesDefaultLighting = true
         
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
         switchView.type = .search
         switchView.delegate = self
@@ -77,6 +77,11 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         imageView.image = UIImage(data: route.image)
         
+    }
+    
+    @IBAction func focus(_ gestureRecognizer: UITapGestureRecognizer) {
+        let devicePoint = self.previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view))
+        self.captureObject.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
     }
     
     override func didReceiveMemoryWarning() {
