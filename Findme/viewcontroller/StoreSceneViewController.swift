@@ -34,6 +34,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 
                 // Create a session configuration
                 let configuration = ARWorldTrackingConfiguration()
+                configuration.worldAlignment = .gravityAndHeading
                 // Run the view's session
                 self.sceneView.session.run(configuration)
             })
