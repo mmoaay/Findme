@@ -18,15 +18,6 @@ extension SearchSceneViewController: SwitchViewDelegate {
         switch status {
         case .locating:
             imageView.isHidden = true
-            
-            captureObject.stopRunning()
-            previewView.isHidden = true
-            
-            // Create a session configuration
-            let configuration = ARWorldTrackingConfiguration()
-            configuration.worldAlignment = .gravityAndHeading
-            // Run the view's session
-            sceneView.session.run(configuration)
             break
         case .going:
             self.sceneView.scene = self.route.scene
@@ -46,12 +37,9 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
-    @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var imageView: UIImageView!
     
     var route = Route()
-    
-    var captureObject:CaptureObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,19 +57,17 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
+        // Run the view's session
+        sceneView.session.run(configuration)
+        
         switchView.type = .search
         switchView.delegate = self
         
-        captureObject = CaptureObject(previewView: previewView, target: self)
-        captureObject.startRunning()
+        imageView.image = route.image
         
-        imageView.image = UIImage(data: route.image)
-        
-    }
-    
-    @IBAction func focus(_ gestureRecognizer: UITapGestureRecognizer) {
-        let devicePoint = self.previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view))
-        self.captureObject.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
     }
     
     override func didReceiveMemoryWarning() {

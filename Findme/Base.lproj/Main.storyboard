@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,6 +102,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="B1q-Yp-MFF" id="W3m-aO-QGk"/>
                         <segue destination="MUc-7a-cAD" kind="show" identifier="from_home_to_search" id="7Ao-mS-xab"/>
+                        <segue destination="L9s-ZQ-rpm" kind="show" identifier="from_home_to_test" id="6ZC-b6-Vq6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kZ-91-ijD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,18 +147,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-S2-jUG" customClass="PreviewView" customModule="Findme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-qW-LhO" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="SDb-88-R1J" appends="YES" id="HQ9-lB-fwn"/>
-                                </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
@@ -191,13 +185,9 @@
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="Fsk-bO-f98"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
-                            <constraint firstItem="G5F-S2-jUG" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="gBA-K1-CbR"/>
-                            <constraint firstItem="G5F-S2-jUG" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="hXK-Rf-aNG"/>
                             <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="VlZ-nq-5rd" secondAttribute="trailing" id="kET-M1-ILf"/>
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="kZW-ef-fMa"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
-                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="G5F-S2-jUG" secondAttribute="bottom" id="rH8-VV-5T0"/>
-                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="G5F-S2-jUG" secondAttribute="trailing" id="zk5-tr-81R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
@@ -205,17 +195,11 @@
                     <connections>
                         <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
                         <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
-                        <outlet property="previewView" destination="G5F-S2-jUG" id="AIe-y9-2np"/>
                         <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
                         <outlet property="switchView" destination="zP1-qW-LhO" id="oV0-io-G6l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="SDb-88-R1J">
-                    <connections>
-                        <action selector="focus:" destination="BV1-FR-VrT" id="FZd-Es-x3i"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="332" y="-278"/>
         </scene>
@@ -231,10 +215,6 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cX-JL-aHO" customClass="PreviewView" customModule="Findme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-nh-gBc">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
@@ -242,26 +222,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="3OP-nX-SYf" appends="YES" id="V0e-cv-vBh"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VCY-c5-ddF" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="4hw-vc-lRn"/>
-                            <constraint firstItem="0cX-JL-aHO" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="BJh-hm-row"/>
                             <constraint firstItem="cDJ-nh-gBc" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="FXn-df-pSo"/>
                             <constraint firstItem="cDJ-nh-gBc" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="SQx-jc-1x3"/>
                             <constraint firstItem="VCZ-eh-Qvi" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="Sbk-Jt-TN0"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="cDJ-nh-gBc" secondAttribute="bottom" id="Tjf-xt-IUK"/>
-                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="0cX-JL-aHO" secondAttribute="bottom" id="VaQ-8C-v7d"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCY-c5-ddF" secondAttribute="trailing" id="X6q-4i-3Sf"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCZ-eh-Qvi" secondAttribute="trailing" id="YMH-sG-XgJ"/>
-                            <constraint firstItem="0cX-JL-aHO" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="cd9-h2-ElE"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCY-c5-ddF" secondAttribute="bottom" id="giJ-JC-fzg"/>
                             <constraint firstItem="VCY-c5-ddF" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="h2C-VS-EmP"/>
-                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="0cX-JL-aHO" secondAttribute="trailing" id="qFK-EB-btD"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="cDJ-nh-gBc" secondAttribute="trailing" id="tUQ-Gn-aZh"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCZ-eh-Qvi" secondAttribute="bottom" id="uGk-c1-qnr"/>
                             <constraint firstItem="VCZ-eh-Qvi" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="xpN-cr-eyE"/>
@@ -273,19 +246,56 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="cDJ-nh-gBc" id="GrF-cA-opJ"/>
-                        <outlet property="previewView" destination="0cX-JL-aHO" id="6Da-Tf-4xa"/>
                         <outlet property="sceneView" destination="VCZ-eh-Qvi" id="tfE-5r-tIn"/>
                         <outlet property="switchView" destination="VCY-c5-ddF" id="NfO-Jq-6KT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnf-6q-vRq" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3OP-nX-SYf">
-                    <connections>
-                        <action selector="focus:" destination="MUc-7a-cAD" id="zam-qh-Ux4"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="332" y="504"/>
+        </scene>
+        <!--Test-->
+        <scene sceneID="JDj-Hv-nfn">
+            <objects>
+                <viewController id="L9s-ZQ-rpm" customClass="TestViewController" customModule="Findme" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="URo-5v-WzF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbM-gt-Wfk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hbM-gt-Wfk" firstAttribute="leading" secondItem="9t3-7Q-6wP" secondAttribute="leading" id="BUd-Wl-iEZ"/>
+                            <constraint firstItem="9t3-7Q-6wP" firstAttribute="bottom" secondItem="hbM-gt-Wfk" secondAttribute="bottom" id="Hyu-N3-Bo0"/>
+                            <constraint firstItem="9t3-7Q-6wP" firstAttribute="trailing" secondItem="hbM-gt-Wfk" secondAttribute="trailing" id="cgI-ve-gxS"/>
+                            <constraint firstItem="hbM-gt-Wfk" firstAttribute="top" secondItem="9t3-7Q-6wP" secondAttribute="top" id="cph-PA-UAV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9t3-7Q-6wP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Test" largeTitleDisplayMode="never" id="KAT-Sy-y2c">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="cxK-r4-MOc">
+                                <connections>
+                                    <action selector="addPressed:" destination="L9s-ZQ-rpm" id="J3R-Si-lTa"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="FDz-q2-4bm">
+                                <connections>
+                                    <action selector="refreshPressed:" destination="L9s-ZQ-rpm" id="0dt-v7-hKc"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sceneView" destination="hbM-gt-Wfk" id="Ezj-mh-wk1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3S-fu-sdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398" y="138"/>
         </scene>
     </scenes>
 </document>

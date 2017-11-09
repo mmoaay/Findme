@@ -29,7 +29,7 @@ class HomeTableViewCell: TableViewCell {
         formatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         detailLabel.text = "Created at " + formatter.string(from: date)
         
-        headImageView.image = UIImage(data: route.image)
+        headImageView.image = route.image
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -10,34 +10,17 @@ import UIKit
 import SceneKit
 import ARKit
 import SVProgressHUD
-import SwiftLocation
-
-import CoreML
-import Vision
 
 extension StoreSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
         self.status = status
         switch status {
         case .locating:
-            captureObject.capturePhoto(completion: { (image: Data) in
-//                Locator.currentPosition(accuracy: .room, onSuccess: { (loc) -> (Void) in
-//                    self.route.origin = loc
-                    self.route.image = image
-                    self.previewView.isHidden = true
-                    self.captureObject.stopRunning()
-                    
-                    // Create a session configuration
-                    let configuration = ARWorldTrackingConfiguration()
-                    configuration.worldAlignment = .gravityAndHeading
-                    // Run the view's session
-                    self.sceneView.session.run(configuration)
-                    
-//                    self.switchView.status = status.next(type: self.switchView.type)
-//                }, onFail: { (err, loc) -> (Void) in
-//                    print("Failed with error: \(err)")
-//                })
-            })
+            if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage) {
+                self.route.image = image
+            } else {
+                return
+            }
             break
         case .done:
             if let last = self.last {
@@ -87,7 +70,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
-    @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -96,8 +78,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     var status:OperationStatus = .locating
     
     var last: SCNVector3? = nil
-    
-    var captureObject:CaptureObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,17 +96,15 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.autoenablesDefaultLighting = true
         
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
+        // Run the view's session
+        sceneView.session.run(configuration)
+        
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         switchView.type = .store
         switchView.delegate = self
-        
-        captureObject = CaptureObject(previewView: previewView, target: self)
-        captureObject.startRunning()
-    }
-    
-    @IBAction func focus(_ gestureRecognizer: UITapGestureRecognizer) {
-        let devicePoint = self.previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view))
-        self.captureObject.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
     }
     
     override func didReceiveMemoryWarning() {

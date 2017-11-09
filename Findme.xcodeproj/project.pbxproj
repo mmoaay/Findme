@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		286C4FC547FEB15D1A810FA7 /* Pods_Findme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6BDE2C55C90EC894F9335E /* Pods_Findme.framework */; };
 		8520E50B1F8BA5F700EAF3AE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8520E50A1F8BA5F700EAF3AE /* HomeTableViewCell.swift */; };
+		8587484B1FB3F0D800690A91 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587484A1FB3F0D800690A91 /* TestViewController.swift */; };
+		8587484D1FB404C700690A91 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587484C1FB404C700690A91 /* UIImageExtension.swift */; };
 		8A18A3A91F8A43D000BB35C3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */; };
 		8A18A3AC1F8A44FA00BB35C3 /* CaptureObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */; };
 		8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3E81F77F130007DB730 /* HomeViewController.swift */; };
@@ -55,6 +57,8 @@
 		0990CC3111FDB300A9089ADD /* Pods-Findme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Findme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Findme/Pods-Findme.debug.xcconfig"; sourceTree = "<group>"; };
 		4B5009B58C69C415BE106B36 /* Pods-Findme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Findme.release.xcconfig"; path = "Pods/Target Support Files/Pods-Findme/Pods-Findme.release.xcconfig"; sourceTree = "<group>"; };
 		8520E50A1F8BA5F700EAF3AE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		8587484A1FB3F0D800690A91 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8587484C1FB404C700690A91 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureObject.swift; sourceTree = "<group>"; };
 		8A86E3E81F77F130007DB730 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				8A86E3EE1F849824007DB730 /* UIColorExtension.swift */,
 				8A86E3F91F86704C007DB730 /* UIFontExtension.swift */,
 				8A86E4051F89AC29007DB730 /* StringExtension.swift */,
+				8587484C1FB404C700690A91 /* UIImageExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 				8A86E3E81F77F130007DB730 /* HomeViewController.swift */,
 				8AF771721F77771B00F2683C /* StoreSceneViewController.swift */,
 				8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */,
+				8587484A1FB3F0D800690A91 /* TestViewController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -450,8 +456,10 @@
 			files = (
 				8AF771731F77771B00F2683C /* StoreSceneViewController.swift in Sources */,
 				8A86E4001F88A15E007DB730 /* SwitchView.swift in Sources */,
+				8587484B1FB3F0D800690A91 /* TestViewController.swift in Sources */,
 				8A86E3FA1F86704C007DB730 /* UIFontExtension.swift in Sources */,
 				8A18A3AC1F8A44FA00BB35C3 /* CaptureObject.swift in Sources */,
+				8587484D1FB404C700690A91 /* UIImageExtension.swift in Sources */,
 				8A86E4021F88D69C007DB730 /* DashedBorderView.swift in Sources */,
 				8A86E3EB1F77F442007DB730 /* SearchSceneViewController.swift in Sources */,
 				8A18A3A91F8A43D000BB35C3 /* PreviewView.swift in Sources */,

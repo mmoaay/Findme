@@ -32,7 +32,7 @@ class Route: NSObject, NSSecureCoding {
         if let scene = aDecoder.decodeObject(forKey: "scene") as? SCNScene {
             self.scene = scene
         }
-        if let image = aDecoder.decodeObject(forKey: "image") as? Data {
+        if let image = aDecoder.decodeObject(forKey: "image") as? UIImage {
             self.image = image
         }
         if let origin = aDecoder.decodeObject(forKey: "origin") as? CLLocation {
@@ -54,8 +54,8 @@ class Route: NSObject, NSSecureCoding {
     var identity:Int64 = Int64(Date().timeIntervalSince1970)
     var name = ""
     var scene = SCNScene()
-    var image = Data()
     var origin = CLLocation()
+    var image = UIImage()
 }
 
 
