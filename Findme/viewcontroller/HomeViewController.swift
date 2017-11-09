@@ -117,7 +117,7 @@ class HomeViewController: UITableViewController {
         
 //        SPRequestPermission.dialog.interactive.present(on: self, with: [.camera, .locationAlways])
         
-        performSegue(withIdentifier: "from_home_to_test", sender: nil)
+//        performSegue(withIdentifier: "from_home_to_test", sender: nil)
         
         Locator.requestAuthorizationIfNeeded(.whenInUse)
     }

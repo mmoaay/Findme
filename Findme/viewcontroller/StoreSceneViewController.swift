@@ -10,6 +10,8 @@ import UIKit
 import SceneKit
 import ARKit
 import SVProgressHUD
+import SwiftLocation
+import CoreLocation
 
 extension StoreSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
@@ -17,8 +19,25 @@ extension StoreSceneViewController: SwitchViewDelegate {
         switch status {
         case .locating:
             if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
-                self.route.image = image
-                self.sceneView.session.run(self.configuration, options: .resetTracking)
+                route.image = image
+                sceneView.session.run(self.configuration, options: .resetTracking)
+                request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
+                    if let location = self.location {
+                        if loc.distance(from: location) > Constant.LOCATION_INTERVAL {
+                            self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
+                            
+                            // Set the scene to the view
+                            self.sceneView.scene = SCNScene()
+                            // Run the view's session
+                            self.sceneView.session.run(self.configuration, options: .resetTracking)
+                            self.location = loc
+                        }
+                    } else {
+                        self.location = loc
+                    }
+                }) { (err, loc) -> (Void) in
+                    
+                }
             } else {
                 return
             }
@@ -34,6 +53,12 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 self.last = nil
             }
             
+            if let location = location {
+                self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
+            }
+            location = nil
+            sceneView.scene = SCNScene()
+            
             self.nameView.isHidden = false
             self.nameTextField.becomeFirstResponder()
             break
@@ -41,12 +66,11 @@ extension StoreSceneViewController: SwitchViewDelegate {
             if let name = nameTextField.text {
                 if false == name.isEmpty {
                     route.name = name
-                    route.scene = self.sceneView.scene
                     if true == RouteCacheService.shared.addRoute(route: route) {
-                        self.navigationController?.popViewController(animated: true)
+                        navigationController?.popViewController(animated: true)
                         
-                        self.nameView.isHidden = true
-                        self.nameTextField.resignFirstResponder()
+                        nameView.isHidden = true
+                        nameTextField.resignFirstResponder()
                     } else {
                         SVProgressHUD.showError(withStatus: "Save failed, try again")
                         return
@@ -63,7 +87,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
         default:
             break
         }
-        self.switchView.status = status.next(type: self.switchView.type)
+        switchView.status = status.next(type: self.switchView.type)
     }
 }
 
@@ -75,6 +99,9 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     
     let route = Route()
+    
+    var request:LocationRequest!
+    var location:CLLocation? = nil
     
     var status:OperationStatus = .locating
     
@@ -110,6 +137,10 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    deinit {
+        Locator.stopRequest(request)
     }
 
     // MARK: - ARSCNViewDelegate
@@ -147,7 +178,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.scene.rootNode.addChildNode(node)
             }
             
-            self.last = current
+            last = current
             
             glLineWidth(0)
         }

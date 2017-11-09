@@ -9,6 +9,8 @@
 import UIKit
 import SceneKit
 import ARKit
+import SwiftLocation
+import CoreLocation
 
 extension SearchSceneViewController {
 }
@@ -21,7 +23,18 @@ extension SearchSceneViewController: SwitchViewDelegate {
             self.sceneView.session.run(self.configuration, options: .resetTracking)
             break
         case .going:
-            self.sceneView.scene = self.route.scene
+            request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
+                if let segment = self.route.segments.first {
+                    if loc.distance(from: segment.origin) < Constant.DISTANCE_INTERVAL {
+                        // Set the scene to the view
+                        self.sceneView.scene = segment.scene
+                        // Run the view's session
+                        self.sceneView.session.run(self.configuration, options: .resetTracking)
+                        self.route.segments.removeFirst()
+                    }
+                }
+            }) { (err, loc) -> (Void) in
+            }
             break
         case .done:
             self.navigationController?.popViewController(animated: true)
@@ -39,6 +52,8 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var switchView: SwitchView!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var request:LocationRequest!
     
     var route = Route()
     
@@ -75,7 +90,11 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
+    deinit {
+        Locator.stopRequest(request)
+    }
+    
     // MARK: - ARSCNViewDelegate
     
 /*

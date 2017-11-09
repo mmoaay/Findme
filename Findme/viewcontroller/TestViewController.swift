@@ -52,7 +52,7 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
             if let location = self.location {
                 if loc.distance(from: location) > 20 {
                     // Set the scene to the view
-                    self.sceneView.scene = SCNScene(named: "art.scnassets/ship.scn")!
+                    self.sceneView.scene = SCNScene()
                     
                     // Run the view's session
                     self.sceneView.session.run(self.configuration, options: .resetTracking)
