@@ -16,8 +16,9 @@ extension StoreSceneViewController: SwitchViewDelegate {
         self.status = status
         switch status {
         case .locating:
-            if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage) {
+            if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
                 self.route.image = image
+                self.sceneView.session.run(self.configuration, options: .resetTracking)
             } else {
                 return
             }
@@ -79,6 +80,13 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     var last: SCNVector3? = nil
     
+    lazy var configuration = { () -> ARWorldTrackingConfiguration in
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
+        configuration.isLightEstimationEnabled = false
+        return configuration
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,22 +95,14 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene()
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
         // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.scene = SCNScene()
         
-        sceneView.autoenablesDefaultLighting = true
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravityAndHeading
         // Run the view's session
         sceneView.session.run(configuration)
         
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         switchView.type = .store
         switchView.delegate = self
     }
@@ -160,11 +160,11 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+        sceneView.session.pause()
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        sceneView.session.run(configuration)
     }
 }

@@ -18,6 +18,8 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
     
     var location:CLLocation? = nil
     
+    var request:LocationRequest!
+    
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
@@ -46,7 +48,7 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration, options: .resetTracking)
         
-        Locator.subscribePosition(accuracy: .room, onUpdate: { (loc) -> (Void) in
+        request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
             if let location = self.location {
                 if loc.distance(from: location) > 20 {
                     // Set the scene to the view
@@ -61,6 +63,11 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
             
         }
     }
+    
+    deinit {
+        Locator.stopRequest(request)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

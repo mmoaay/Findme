@@ -18,6 +18,7 @@ extension SearchSceneViewController: SwitchViewDelegate {
         switch status {
         case .locating:
             imageView.isHidden = true
+            self.sceneView.session.run(self.configuration, options: .resetTracking)
             break
         case .going:
             self.sceneView.scene = self.route.scene
@@ -41,6 +42,13 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     
     var route = Route()
     
+    lazy var configuration = { () -> ARWorldTrackingConfiguration in
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
+        configuration.isLightEstimationEnabled = false
+        return configuration
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,17 +57,11 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
         // Set the scene to the view
         sceneView.scene = SCNScene()
-        
-        sceneView.autoenablesDefaultLighting = true
-        
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravityAndHeading
+    
         // Run the view's session
         sceneView.session.run(configuration)
         
@@ -67,7 +69,6 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         switchView.delegate = self
         
         imageView.image = route.image
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,6 +99,6 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        sceneView.session.run(configuration)
     }
 }

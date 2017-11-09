@@ -31,9 +31,9 @@ enum OperationStatus {
         case .going:
             switch type {
             case .store:
-                return "Please hold on for 5 seconds, then press Routing and follow the dashed circle to record the route to find me"
+                return "Please hold on for 3 seconds, then press Routing and follow the dashed circle to record the route to find me"
             case .search:
-                return "Please hold on for 5 seconds, then press Searching and follow the the route to finde me"
+                return "Please hold on for 3 seconds, then press Searching and follow the the route to finde me"
             }
         case .done:
             switch type {
@@ -148,7 +148,7 @@ class SwitchView: UIView {
     @IBAction func switchPressed(_ sender: Any) {
         if .locating == status {
             self.switchButton.isEnabled = false
-            var count = 5
+            var count = 3
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                 if 0 == count {
                     self.switchButton.isEnabled = true
