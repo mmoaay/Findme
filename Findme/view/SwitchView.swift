@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-protocol SwitchViewDelegate {
+protocol SwitchViewDelegate: NSObjectProtocol {
     func switched(status: OperationStatus)
 }
 
@@ -99,7 +99,7 @@ enum OperationStatus {
 
 class SwitchView: UIView {
     
-    var delegate: SwitchViewDelegate? = nil
+    weak var delegate: SwitchViewDelegate? = nil
 
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var captureView: DashedBorderView!

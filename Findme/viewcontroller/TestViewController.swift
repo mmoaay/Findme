@@ -18,7 +18,7 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
     
     var location:CLLocation? = nil
     
-    var request:LocationRequest!
+    var request:LocationRequest?
     
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
@@ -65,7 +65,9 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     deinit {
-        Locator.stopRequest(request)
+        if let request = request {
+            Locator.stopRequest(request)
+        }
     }
     
 

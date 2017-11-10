@@ -22,8 +22,15 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 route.image = image
                 sceneView.session.run(self.configuration, options: .resetTracking)
                 request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
+                    
+                    if loc.horizontalAccuracy < Constant.HORIZONTAL_ACCURACY_FILTER || loc.verticalAccuracy < Constant.VERTICAL_ACCURACY_FILTER {
+                        return
+                    }
+                    
                     if let location = self.location {
-                        if loc.distance(from: location) > Constant.LOCATION_INTERVAL {
+                        print(loc.verticalAccuracy, loc.horizontalAccuracy)
+                        print(loc.distance(from: location))
+                        if loc.distance(from: location) > Constant.LOCATION_INTERVAL && loc.timestamp.timeIntervalSince1970 - location.timestamp.timeIntervalSince1970 > Constant.LOCATION_INTERVAL/Constant.STEP_INTERVAL {
                             self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
                             
                             // Set the scene to the view
@@ -36,7 +43,6 @@ extension StoreSceneViewController: SwitchViewDelegate {
                         self.location = loc
                     }
                 }) { (err, loc) -> (Void) in
-                    
                 }
             } else {
                 return
@@ -100,7 +106,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     let route = Route()
     
-    var request:LocationRequest!
+    var request:LocationRequest?
     var location:CLLocation? = nil
     
     var status:OperationStatus = .locating
@@ -140,7 +146,9 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     }
     
     deinit {
-        Locator.stopRequest(request)
+        if let request = request {
+            Locator.stopRequest(request)
+        }
     }
 
     // MARK: - ARSCNViewDelegate

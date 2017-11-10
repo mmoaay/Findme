@@ -25,6 +25,8 @@ extension SearchSceneViewController: SwitchViewDelegate {
         case .going:
             request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
                 if let segment = self.route.segments.first {
+                    print(loc.verticalAccuracy, loc.horizontalAccuracy)
+                    print(loc.distance(from: segment.origin))
                     if loc.distance(from: segment.origin) < Constant.DISTANCE_INTERVAL {
                         // Set the scene to the view
                         self.sceneView.scene = segment.scene
@@ -92,7 +94,9 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     }
     
     deinit {
-        Locator.stopRequest(request)
+        if let request = request {
+            Locator.stopRequest(request)
+        }
     }
     
     // MARK: - ARSCNViewDelegate
