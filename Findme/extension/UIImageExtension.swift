@@ -20,7 +20,7 @@ extension UIImage {
         VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &cgImage)
         
         if let cgImage = cgImage {
-            self.init(cgImage: cgImage)
+            self.init(cgImage: cgImage, scale: 1.0, orientation: .right)
         } else {
             return nil
         }
@@ -34,7 +34,7 @@ extension UIImage {
         let rect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer),
                           height: CVPixelBufferGetHeight(pixelBuffer))
         if let cgImage = context.createCGImage(ciImage, from: rect) {
-            self.init(cgImage: cgImage)
+            self.init(cgImage: cgImage, scale: 1.0, orientation: .right)
         } else {
             return nil
         }

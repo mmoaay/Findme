@@ -13,6 +13,7 @@
 		8587484D1FB404C700690A91 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587484C1FB404C700690A91 /* UIImageExtension.swift */; };
 		8A18A3A91F8A43D000BB35C3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */; };
 		8A18A3AC1F8A44FA00BB35C3 /* CaptureObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */; };
+		8A6F09291FB8665F00D7E398 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F09281FB8665F00D7E398 /* LocationManager.swift */; };
 		8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3E81F77F130007DB730 /* HomeViewController.swift */; };
 		8A86E3EB1F77F442007DB730 /* SearchSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */; };
 		8A86E3ED1F84957C007DB730 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86E3EC1F84957B007DB730 /* SCNVector3Extensions.swift */; };
@@ -61,6 +62,7 @@
 		8587484C1FB404C700690A91 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureObject.swift; sourceTree = "<group>"; };
+		8A6F09281FB8665F00D7E398 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8A86E3E81F77F130007DB730 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A86E3EA1F77F442007DB730 /* SearchSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneViewController.swift; sourceTree = "<group>"; };
 		8A86E3EC1F84957B007DB730 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				8A86E3F61F84B191007DB730 /* RouteCacheService.swift */,
+				8A6F09281FB8665F00D7E398 /* LocationManager.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -444,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -471,6 +474,7 @@
 				8A86E3ED1F84957C007DB730 /* SCNVector3Extensions.swift in Sources */,
 				8A86E3F71F84B191007DB730 /* RouteCacheService.swift in Sources */,
 				8520E50B1F8BA5F700EAF3AE /* HomeTableViewCell.swift in Sources */,
+				8A6F09291FB8665F00D7E398 /* LocationManager.swift in Sources */,
 				8A86E3EF1F849824007DB730 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

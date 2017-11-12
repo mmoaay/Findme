@@ -14,12 +14,10 @@ class Constant {
     static let ROUTE_DOT_INTERVAL: Float = 0.05
     
     static let WAIT_TIME: Int = 3
-    static let LOCATION_INTERVAL: Double = 20.0
-    static let DISTANCE_INTERVAL: Double = 1
+    static let DISTANCE_FILTER: Double = 100.0
+    static let DISTANCE_INTERVAL: Double = 0.5
     
-    static let STEP_INTERVAL: Double = 1.5
-    
-    static let HORIZONTAL_ACCURACY_FILTER = 65.0
-    static let VERTICAL_ACCURACY_FILTER = 10.0
+    static let HORIZONTAL_ACCURACY_FILTER = 10.0
+    static let VERTICAL_ACCURACY_FILTER = 3.0
 }
 

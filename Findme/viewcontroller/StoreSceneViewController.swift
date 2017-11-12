@@ -10,7 +10,6 @@ import UIKit
 import SceneKit
 import ARKit
 import SVProgressHUD
-import SwiftLocation
 import CoreLocation
 
 extension StoreSceneViewController: SwitchViewDelegate {
@@ -21,29 +20,19 @@ extension StoreSceneViewController: SwitchViewDelegate {
             if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
                 route.image = image
                 sceneView.session.run(self.configuration, options: .resetTracking)
-                request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
-                    
-                    if loc.horizontalAccuracy < Constant.HORIZONTAL_ACCURACY_FILTER || loc.verticalAccuracy < Constant.VERTICAL_ACCURACY_FILTER {
-                        return
+                
+                LocationManager.shared.start(distanceFiltered: { [unowned self] (loc) in
+                    if let location = LocationManager.shared.current {
+                        print("distance: ", loc.distance(from: location))
+                        
+                        self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
+                        
+                        // Set the scene to the view
+                        self.sceneView.scene = SCNScene()
+                        // Run the view's session
+                        self.sceneView.session.run(self.configuration, options: .resetTracking)
                     }
-                    
-                    if let location = self.location {
-                        print(loc.verticalAccuracy, loc.horizontalAccuracy)
-                        print(loc.distance(from: location))
-                        if loc.distance(from: location) > Constant.LOCATION_INTERVAL && loc.timestamp.timeIntervalSince1970 - location.timestamp.timeIntervalSince1970 > Constant.LOCATION_INTERVAL/Constant.STEP_INTERVAL {
-                            self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
-                            
-                            // Set the scene to the view
-                            self.sceneView.scene = SCNScene()
-                            // Run the view's session
-                            self.sceneView.session.run(self.configuration, options: .resetTracking)
-                            self.location = loc
-                        }
-                    } else {
-                        self.location = loc
-                    }
-                }) { (err, loc) -> (Void) in
-                }
+                })
             } else {
                 return
             }
@@ -59,10 +48,9 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 self.last = nil
             }
             
-            if let location = location {
+            if let location = LocationManager.shared.current {
                 self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
             }
-            location = nil
             sceneView.scene = SCNScene()
             
             self.nameView.isHidden = false
@@ -106,9 +94,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     let route = Route()
     
-    var request:LocationRequest?
-    var location:CLLocation? = nil
-    
     var status:OperationStatus = .locating
     
     var last: SCNVector3? = nil
@@ -146,9 +131,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     }
     
     deinit {
-        if let request = request {
-            Locator.stopRequest(request)
-        }
+        LocationManager.shared.stop()
     }
 
     // MARK: - ARSCNViewDelegate

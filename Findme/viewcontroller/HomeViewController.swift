@@ -8,7 +8,7 @@
 
 import UIKit
 import SceneKit
-import SwiftLocation
+import CoreLocation
 //import Sparrow
 
 extension HomeViewController: UISearchResultsUpdating
@@ -119,7 +119,7 @@ class HomeViewController: UITableViewController {
         
 //        performSegue(withIdentifier: "from_home_to_test", sender: nil)
         
-        Locator.requestAuthorizationIfNeeded(.whenInUse)
+        LocationManager.shared.requestAuthorization()
     }
 
     override func viewWillAppear(_ animated: Bool) {
