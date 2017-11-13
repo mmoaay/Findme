@@ -182,7 +182,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        sceneView.session.pause()
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
