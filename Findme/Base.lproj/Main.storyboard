@@ -215,8 +215,8 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </arscnView>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-nh-gBc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-nh-gBc">
+                                <rect key="frame" x="0.0" y="214" width="375" height="303"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCY-c5-ddF" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -228,9 +228,9 @@
                         <constraints>
                             <constraint firstItem="VCY-c5-ddF" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="4hw-vc-lRn"/>
                             <constraint firstItem="cDJ-nh-gBc" firstAttribute="leading" secondItem="ZVe-yc-tvy" secondAttribute="leading" id="FXn-df-pSo"/>
-                            <constraint firstItem="cDJ-nh-gBc" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="SQx-jc-1x3"/>
+                            <constraint firstItem="cDJ-nh-gBc" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" constant="150" id="SQx-jc-1x3"/>
                             <constraint firstItem="VCZ-eh-Qvi" firstAttribute="top" secondItem="ZVe-yc-tvy" secondAttribute="top" id="Sbk-Jt-TN0"/>
-                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="cDJ-nh-gBc" secondAttribute="bottom" id="Tjf-xt-IUK"/>
+                            <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="cDJ-nh-gBc" secondAttribute="bottom" constant="150" id="Tjf-xt-IUK"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCY-c5-ddF" secondAttribute="trailing" id="X6q-4i-3Sf"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="trailing" secondItem="VCZ-eh-Qvi" secondAttribute="trailing" id="YMH-sG-XgJ"/>
                             <constraint firstItem="ZVe-yc-tvy" firstAttribute="bottom" secondItem="VCY-c5-ddF" secondAttribute="bottom" id="giJ-JC-fzg"/>
