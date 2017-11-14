@@ -19,17 +19,11 @@ extension LocationManager: CLLocationManagerDelegate {
     
     private func filter (_ locations: [CLLocation]) {
         for location in locations {
-            print("horizontalAccuracy: ", location.horizontalAccuracy, ", horizontalAccuracy: ", location.verticalAccuracy)
+            print("horizontalAccuracy: ", location.horizontalAccuracy, ", verticalAccuracy: ", location.verticalAccuracy)
             
             if let completion = locationUpdatedCompletion { completion(location) }
             
             if let cur = current {
-                print("distance: ", cur.distance(from: location))
-                if cur.distance(from: location) < Constant.DISTANCE_INTERVAL
-                    && cur.verticalAccuracy > location.verticalAccuracy
-                    && cur.horizontalAccuracy > location.horizontalAccuracy {
-                    current = location
-                }
                 if (cur.distance(from: location) >= Constant.DISTANCE_FILTER) {
                     current = location
                     if let completion = distanceFilteredCompletion { completion(location) }

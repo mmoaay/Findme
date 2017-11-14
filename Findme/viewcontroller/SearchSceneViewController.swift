@@ -18,13 +18,8 @@ extension SearchSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
         switch status {
         case .locating:
-            imageView.isHidden = true
-            self.sceneView.session.run(self.configuration, options: .resetTracking)
-            break
-        case .going:
             LocationManager.shared.start(locationUpdated:{ [unowned self] (loc) in
                 if let segment = self.route.segments.first {
-                    
                     print("origin distance: ", loc.distance(from: segment.origin))
                     
                     if loc.distance(from: segment.origin) < Constant.DISTANCE_INTERVAL {
@@ -36,6 +31,9 @@ extension SearchSceneViewController: SwitchViewDelegate {
                     }
                 }
             })
+            break
+        case .going:
+            imageView.isHidden = true
             break
         case .done:
             self.navigationController?.popViewController(animated: true)

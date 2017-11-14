@@ -21,10 +21,13 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 route.image = image
                 sceneView.session.run(self.configuration, options: .resetTracking)
                 
-                LocationManager.shared.start(distanceFiltered: { [unowned self] (loc) in
+                LocationManager.shared.start(locationUpdated: {[unowned self] (loc) in
                     if let location = LocationManager.shared.current {
+                        self.debugLabel.text = "distance: " + String(loc.distance(from: location))
                         print("distance: ", loc.distance(from: location))
-                        
+                    }
+                }, distanceFiltered: { [unowned self] (loc) in
+                    if let location = LocationManager.shared.current {
                         self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
                         
                         // Set the scene to the view
@@ -91,6 +94,8 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var switchView: SwitchView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var debugLabel: UILabel!
     
     let route = Route()
     
