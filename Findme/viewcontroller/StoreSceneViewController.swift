@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import SVProgressHUD
+import CoreLocation
 
 extension StoreSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
@@ -17,23 +18,20 @@ extension StoreSceneViewController: SwitchViewDelegate {
         switch status {
         case .locating:
             if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
-                self.route.image = image
-                self.sceneView.session.run(self.configuration, options: .resetTracking)
+                route.image = image
+                sceneView.session.run(self.configuration, options: .resetTracking)
             } else {
                 return
             }
             break
         case .done:
             if let last = self.last {
-                let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-                let node = SCNNode(geometry: box)
-                node.position = last
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "CD4F39")
-                sceneView.scene.rootNode.addChildNode(node)
-                
+                addEndNode(position: last)
                 self.last = nil
+                
+                route.segments.append(self.sceneView.scene)
             }
-            
+    
             self.nameView.isHidden = false
             self.nameTextField.becomeFirstResponder()
             break
@@ -41,12 +39,11 @@ extension StoreSceneViewController: SwitchViewDelegate {
             if let name = nameTextField.text {
                 if false == name.isEmpty {
                     route.name = name
-                    route.scene = self.sceneView.scene
                     if true == RouteCacheService.shared.addRoute(route: route) {
-                        self.navigationController?.popViewController(animated: true)
+                        navigationController?.popViewController(animated: true)
                         
-                        self.nameView.isHidden = true
-                        self.nameTextField.resignFirstResponder()
+                        nameView.isHidden = true
+                        nameTextField.resignFirstResponder()
                     } else {
                         SVProgressHUD.showError(withStatus: "Save failed, try again")
                         return
@@ -63,7 +60,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
         default:
             break
         }
-        self.switchView.status = status.next(type: self.switchView.type)
+        switchView.status = status.next(type: self.switchView.type)
     }
 }
 
@@ -73,6 +70,8 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var switchView: SwitchView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var debugLabel: UILabel!
     
     let route = Route()
     
@@ -122,34 +121,65 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+
+    private func addBeginNode(position: SCNVector3) {
+        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
+        let node = SCNNode(geometry: box)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "43CD80")
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
+    private func addEndNode(position: SCNVector3) {
+        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
+        let node = SCNNode(geometry: box)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "CD4F39")
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
+    private func addNormalNode(position: SCNVector3) {
+        let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
+        let node = SCNNode(geometry: sphere)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        if .going == status {
-            guard let pointOfView = sceneView.pointOfView else { return }
-            
-            let current = pointOfView.position
-            if let last = self.last {
-                let distance = last.distance(vector: current)
-                if distance < Constant.ROUTE_DOT_INTERVAL { return }
+        DispatchQueue.main.async {
+            if .going == self.status {
+                guard let pointOfView = self.sceneView.pointOfView else { return }
                 
-//                let cone = SCNCone(topRadius: 0.0, bottomRadius: Constant.ROUTE_DOT_RADIUS, height: Constant.ROUTE_DOT_RADIUS*4.0)
+                let current = pointOfView.position
+                if let last = self.last {
+                    let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
+                    self.debugLabel.text = "distance: " + String(distance)
+                    print("distance: ", distance)
+                    
+                    if distance > Constant.DISTANCE_INTERVAL {
+                        self.addEndNode(position: current)
+                        self.last = nil
+                        
+                        self.route.segments.append(self.sceneView.scene)
+                        
+                        // Set the scene to the view
+                        self.sceneView.scene = SCNScene()
+                        // Run the view's session
+                        self.sceneView.session.run(self.configuration, options: .resetTracking)
+                    } else {
+                        if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL {
+                            self.addNormalNode(position: current);
+                            self.last = current
+                        }
+                    }
+                } else {
+                    self.addBeginNode(position: current)
+                    self.last = current
+                }
                 
-                let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
-                let node = SCNNode(geometry: sphere)
-//                node.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi/2.0), y:CGFloat(asin((current.y-last.y)/distance)), z: CGFloat(asin((current.z-last.z)/distance)), duration: 0.0))
-                node.position = current
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-                sceneView.scene.rootNode.addChildNode(node)
-            } else {
-                let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-                let node = SCNNode(geometry: box)
-                node.position = current
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "43CD80")
-                sceneView.scene.rootNode.addChildNode(node)
+                glLineWidth(0)
             }
-            
-            self.last = current
-            
-            glLineWidth(0)
         }
     }
     
@@ -160,7 +190,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        sceneView.session.pause()
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
