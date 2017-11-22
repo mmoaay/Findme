@@ -20,42 +20,18 @@ extension StoreSceneViewController: SwitchViewDelegate {
             if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
                 route.image = image
                 sceneView.session.run(self.configuration, options: .resetTracking)
-                
-                LocationManager.shared.start(locationUpdated: {[unowned self] (loc) in
-                    if let location = LocationManager.shared.current {
-                        self.debugLabel.text = "distance: " + String(loc.distance(from: location))
-                        print("distance: ", loc.distance(from: location))
-                    }
-                }, distanceFiltered: { [unowned self] (loc) in
-                    if let location = LocationManager.shared.current {
-                        self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
-                        
-                        // Set the scene to the view
-                        self.sceneView.scene = SCNScene()
-                        // Run the view's session
-                        self.sceneView.session.run(self.configuration, options: .resetTracking)
-                    }
-                })
             } else {
                 return
             }
             break
         case .done:
             if let last = self.last {
-                let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-                let node = SCNNode(geometry: box)
-                node.position = last
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "CD4F39")
-                sceneView.scene.rootNode.addChildNode(node)
-                
+                addEndNode(position: last)
                 self.last = nil
+                
+                route.segments.append(self.sceneView.scene)
             }
-            
-            if let location = LocationManager.shared.current {
-                self.route.segments.append(Segment(scene: self.sceneView.scene, origin: location))
-            }
-            sceneView.scene = SCNScene()
-            
+    
             self.nameView.isHidden = false
             self.nameTextField.becomeFirstResponder()
             break
@@ -134,10 +110,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-    
-    deinit {
-        LocationManager.shared.stop()
-    }
 
     // MARK: - ARSCNViewDelegate
     
@@ -149,34 +121,65 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+
+    private func addBeginNode(position: SCNVector3) {
+        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
+        let node = SCNNode(geometry: box)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "43CD80")
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
+    private func addEndNode(position: SCNVector3) {
+        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
+        let node = SCNNode(geometry: box)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "CD4F39")
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
+    private func addNormalNode(position: SCNVector3) {
+        let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
+        let node = SCNNode(geometry: sphere)
+        node.position = position
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        sceneView.scene.rootNode.addChildNode(node)
+    }
+    
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        if .going == status {
-            guard let pointOfView = sceneView.pointOfView else { return }
-            
-            let current = pointOfView.position
-            if let last = self.last {
-                let distance = last.distance(vector: current)
-                if distance < Constant.ROUTE_DOT_INTERVAL { return }
+        DispatchQueue.main.async {
+            if .going == self.status {
+                guard let pointOfView = self.sceneView.pointOfView else { return }
                 
-//                let cone = SCNCone(topRadius: 0.0, bottomRadius: Constant.ROUTE_DOT_RADIUS, height: Constant.ROUTE_DOT_RADIUS*4.0)
+                let current = pointOfView.position
+                if let last = self.last {
+                    let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
+                    self.debugLabel.text = "distance: " + String(distance)
+                    print("distance: ", distance)
+                    
+                    if distance > Constant.DISTANCE_INTERVAL {
+                        self.addEndNode(position: current)
+                        self.last = nil
+                        
+                        self.route.segments.append(self.sceneView.scene)
+                        
+                        // Set the scene to the view
+                        self.sceneView.scene = SCNScene()
+                        // Run the view's session
+                        self.sceneView.session.run(self.configuration, options: .resetTracking)
+                    } else {
+                        if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL {
+                            self.addNormalNode(position: current);
+                            self.last = current
+                        }
+                    }
+                } else {
+                    self.addBeginNode(position: current)
+                    self.last = current
+                }
                 
-                let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
-                let node = SCNNode(geometry: sphere)
-//                node.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi/2.0), y:CGFloat(asin((current.y-last.y)/distance)), z: CGFloat(asin((current.z-last.z)/distance)), duration: 0.0))
-                node.position = current
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-                sceneView.scene.rootNode.addChildNode(node)
-            } else {
-                let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-                let node = SCNNode(geometry: box)
-                node.position = current
-                node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "43CD80")
-                sceneView.scene.rootNode.addChildNode(node)
+                glLineWidth(0)
             }
-            
-            last = current
-            
-            glLineWidth(0)
         }
     }
     

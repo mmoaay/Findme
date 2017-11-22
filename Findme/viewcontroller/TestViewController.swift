@@ -9,16 +9,10 @@
 import UIKit
 import SceneKit
 import ARKit
-import SwiftLocation
-import CoreLocation
 
 class TestViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
-    
-    var location:CLLocation? = nil
-    
-    var request:LocationRequest?
     
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
@@ -47,29 +41,7 @@ class TestViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         // Run the view's session
         sceneView.session.run(configuration, options: .resetTracking)
-        
-        request = Locator.subscribePosition(accuracy: .room, onUpdate: { [unowned self] (loc) -> (Void) in
-            if let location = self.location {
-                if loc.distance(from: location) > 20 {
-                    // Set the scene to the view
-                    self.sceneView.scene = SCNScene()
-                    
-                    // Run the view's session
-                    self.sceneView.session.run(self.configuration, options: .resetTracking)
-                    self.location = loc
-                }
-            }
-        }) { (err, loc) -> (Void) in
-            
-        }
     }
-    
-    deinit {
-        if let request = request {
-            Locator.stopRequest(request)
-        }
-    }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -9,7 +9,6 @@
 import UIKit
 import SceneKit
 import ARKit
-import CoreLocation
 
 extension SearchSceneViewController {
 }
@@ -18,19 +17,13 @@ extension SearchSceneViewController: SwitchViewDelegate {
     func switched(status: OperationStatus) {
         switch status {
         case .locating:
-            LocationManager.shared.start(locationUpdated:{ [unowned self] (loc) in
-                if let segment = self.route.segments.first {
-                    print("origin distance: ", loc.distance(from: segment.origin))
-                    
-                    if loc.distance(from: segment.origin) < Constant.DISTANCE_INTERVAL {
-                        // Set the scene to the view
-                        self.sceneView.scene = segment.scene
-                        // Run the view's session
-                        self.sceneView.session.run(self.configuration, options: .resetTracking)
-                        self.route.segments.removeFirst()
-                    }
-                }
-            })
+            index = 0
+            if index < route.segments.count {
+                self.sceneView.scene = route.segments[index]
+                index += 1
+                // Run the view's session
+                self.sceneView.session.run(self.configuration, options: .resetTracking)
+            }
             break
         case .going:
             imageView.isHidden = true
@@ -53,6 +46,8 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     
     var route = Route()
+    
+    var index = 0
     
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
@@ -88,20 +83,32 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
-    deinit {
-        LocationManager.shared.stop()
-    }
-    
     // MARK: - ARSCNViewDelegate
     
-/*
+
     // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        let node = SCNNode()
+//
+//        return node
+//    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        guard let pointOfView = sceneView.pointOfView else { return }
+        let current = pointOfView.position
+        
+        let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
+        print("distance: ", distance)
+        
+        if distance > Constant.DISTANCE_INTERVAL {
+            if index < route.segments.count {
+                self.sceneView.scene = route.segments[index]
+                index += 1
+                // Run the view's session
+                self.sceneView.session.run(self.configuration, options: .resetTracking)
+            }
+        }
     }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

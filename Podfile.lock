@@ -9,16 +9,12 @@ PODS:
   - Motion/Core (1.2.5)
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.2)
-  - SwiftLocation (3.0.1-beta):
-    - SwiftyJSON (~> 4.0.0-alpha.1)
-  - SwiftyJSON (4.0.0-alpha.1)
 
 DEPENDENCIES:
   - IQKeyboardManager
   - Material
   - SnapKit (~> 4.0.0)
   - SVProgressHUD
-  - SwiftLocation (= 3.0.1-beta)
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
@@ -26,9 +22,7 @@ SPEC CHECKSUMS:
   Motion: 88a8bee21926af792333f4b9e7170f710e9e48f3
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
-  SwiftLocation: 1dce79e78113fe14c0f95589e32c9da8a983d9c3
-  SwiftyJSON: dc88934f85fb50b263b1632b9cbad3402505783e
 
-PODFILE CHECKSUM: 020df37130c992b1347265a1a661a8e6b9d1e49a
+PODFILE CHECKSUM: dee636c8b0772409f58591a359851ef0ced004b0
 
 COCOAPODS: 1.2.1

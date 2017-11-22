@@ -9,35 +9,6 @@
 import Foundation
 import UIKit
 import SceneKit
-import CoreLocation
-
-class Segment: NSObject, NSSecureCoding  {
-    var scene = SCNScene()
-    var origin = CLLocation()
-    
-    init(scene: SCNScene, origin:CLLocation) {
-        self.scene = scene
-        self.origin = origin
-    }
-    
-    static var supportsSecureCoding: Bool {
-        return true
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.scene, forKey: "scene")
-        aCoder.encode(self.origin, forKey: "origin")
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        if let scene = aDecoder.decodeObject(forKey: "scene") as? SCNScene {
-            self.scene = scene
-        }
-        if let origin = aDecoder.decodeObject(forKey: "origin") as? CLLocation {
-            self.origin = origin
-        }
-    }
-}
 
 class Route: NSObject, NSSecureCoding {
     static var supportsSecureCoding: Bool {
@@ -59,12 +30,12 @@ class Route: NSObject, NSSecureCoding {
         if let image = aDecoder.decodeObject(forKey: "image") as? UIImage {
             self.image = image
         }
-        if let segments = aDecoder.decodeObject(forKey: "segments") as? [Segment] {
+        if let segments = aDecoder.decodeObject(forKey: "segments") as? [SCNScene] {
             self.segments = segments
         }
     }
     
-    init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, segments: [Segment]) {
+    init(identity: Int64 = Int64(Date().timeIntervalSince1970), name: String, segments: [SCNScene]) {
         self.name = name
         self.segments = segments
         self.identity = identity
@@ -77,7 +48,7 @@ class Route: NSObject, NSSecureCoding {
     var identity:Int64 = Int64(Date().timeIntervalSince1970)
     var name = ""
     var image = UIImage()
-    var segments: [Segment] = []
+    var segments: [SCNScene] = []
 }
 
 
