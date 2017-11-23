@@ -19,23 +19,23 @@ extension SearchSceneViewController: SwitchViewDelegate {
         case .locating:
             index = 0
             if index < route.segments.count {
-                self.sceneView.scene = route.segments[index]
+                sceneView.scene = route.segments[index]
                 index += 1
                 // Run the view's session
-                self.sceneView.session.run(self.configuration, options: .resetTracking)
+                sceneView.session.run(configuration, options: .resetTracking)
             }
             break
         case .going:
             imageView.isHidden = true
             break
         case .done:
-            self.navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
             break
         default:
             break
         }
         
-        self.switchView.status = status.next(type: self.switchView.type)
+        switchView.status = status.next(type: switchView.type)
     }
 }
 
@@ -94,20 +94,23 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
 //    }
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        guard let pointOfView = sceneView.pointOfView else { return }
-        let current = pointOfView.position
-        
-        let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
-        print("distance: ", distance)
-        
-        if distance > Constant.DISTANCE_INTERVAL {
-            if index < route.segments.count {
-                self.sceneView.scene = route.segments[index]
-                index += 1
-                // Run the view's session
-                self.sceneView.session.run(self.configuration, options: .resetTracking)
+        DispatchQueue.main.async {
+            guard let pointOfView = self.sceneView.pointOfView else { return }
+            let current = pointOfView.position
+            
+            let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
+            print("distance: ", distance)
+            
+            if distance > Constant.DISTANCE_INTERVAL {
+                if self.index < self.route.segments.count {
+                    self.sceneView.scene = self.route.segments[self.index]
+                    self.index += 1
+                    // Run the view's session
+                    self.sceneView.session.run(self.configuration, options: .resetTracking)
+                }
             }
         }
+        
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {

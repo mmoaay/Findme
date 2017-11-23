@@ -17,9 +17,9 @@ extension StoreSceneViewController: SwitchViewDelegate {
         self.status = status
         switch status {
         case .locating:
-            if let currentFrame = self.sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
+            if let currentFrame = sceneView.session.currentFrame, let image = UIImage(pixelBuffer: currentFrame.capturedImage, context:CIContext()) {
                 route.image = image
-                sceneView.session.run(self.configuration, options: .resetTracking)
+                sceneView.session.run(configuration, options: .resetTracking)
             } else {
                 return
             }
@@ -29,11 +29,11 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 addEndNode(position: last)
                 self.last = nil
                 
-                route.segments.append(self.sceneView.scene)
+                route.segments.append(sceneView.scene)
             }
     
-            self.nameView.isHidden = false
-            self.nameTextField.becomeFirstResponder()
+            nameView.isHidden = false
+            nameTextField.becomeFirstResponder()
             break
         case .save:
             if let name = nameTextField.text {
@@ -60,7 +60,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
         default:
             break
         }
-        switchView.status = status.next(type: self.switchView.type)
+        switchView.status = status.next(type: switchView.type)
     }
 }
 
