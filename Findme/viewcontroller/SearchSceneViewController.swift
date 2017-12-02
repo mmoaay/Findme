@@ -72,6 +72,10 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         imageView.image = route.image
     }
     
+    @IBAction func sharePressed(_ sender: UIBarButtonItem) {
+        ShareUtil.shared.shareRoute(shareItem: sender, identity: route.identity)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
