@@ -29,7 +29,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
                 addEndNode(position: last)
                 self.last = nil
                 
-                route.segments.append(sceneView.scene)
+                route.scene = sceneView.scene
             }
     
             nameView.isHidden = false
@@ -70,8 +70,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var switchView: SwitchView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
-    
-    @IBOutlet weak var debugLabel: UILabel!
     
     let route = Route()
     
@@ -153,25 +151,9 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
                 
                 let current = pointOfView.position
                 if let last = self.last {
-                    let distance = current.distance(vector: SCNVector3(x: 0.0, y: 0.0, z: 0.0))
-                    self.debugLabel.text = "distance: " + String(distance)
-                    print("distance: ", distance)
-                    
-                    if distance > Constant.DISTANCE_INTERVAL {
-                        self.addEndNode(position: current)
-                        self.last = nil
-                        
-                        self.route.segments.append(self.sceneView.scene)
-                        
-                        // Set the scene to the view
-                        self.sceneView.scene = SCNScene()
-                        // Run the view's session
-                        self.sceneView.session.run(self.configuration, options: .resetTracking)
-                    } else {
-                        if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL {
-                            self.addNormalNode(position: current);
-                            self.last = current
-                        }
+                    if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL {
+                        self.addNormalNode(position: current);
+                        self.last = current
                     }
                 } else {
                     self.addBeginNode(position: current)
