@@ -13,8 +13,27 @@ class RouteCacheService {
     static let shared = RouteCacheService()
     
     init() {
-        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.findme.routes"), let routes = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [String : Route]{
-            self.routes = routes
+        FileUtil.createFolder(name: "/com.mmoaay.findme.routes")
+        getAllRoutes()
+    }
+    
+    func getAllRoutes() {
+        if let path = FileUtil.path(name: "/com.mmoaay.findme.routes") {
+            let files = FileUtil.allFiles(path: path, filterTypes: ["fmr"])
+            for file in files {
+                let filePath = path.appending("/").appending(file)
+                getRoute(filePath: filePath)
+            }
+        }
+    }
+    
+    @discardableResult
+    func getRoute(filePath: String) -> Route? {
+        if let route = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Route {
+            routes[String(route.identity)] = route
+            return route
+        } else {
+            return nil
         }
     }
     
@@ -37,19 +56,26 @@ class RouteCacheService {
     @discardableResult
     func addRoute(route: Route) -> Bool {
         routes[String(route.identity)] = route
-        return archive()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+        
+        if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.identity).appending(".fmr"))) {
+            return NSKeyedArchiver.archiveRootObject(route, toFile: file)
+        } else {
+            return false
+        }
     }
     
     @discardableResult
     func delRoute(route: Route) -> Bool {
         routes.removeValue(forKey: String(route.identity))
-        return archive()
-    }
-    
-    private func archive() -> Bool {
-        if let file = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last?.appending("/com.mmoaay.findme.routes") {
-            return NSKeyedArchiver.archiveRootObject(routes, toFile: file)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+        
+        if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.identity).appending(".fmr"))) {
+            return FileUtil.delFile(path: file)
+        } else {
+            return false
         }
-        return false
     }
 }

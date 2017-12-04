@@ -115,15 +115,22 @@ class HomeViewController: UITableViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = true
         // Do any additional setup after loading the view.
         
-//        performSegue(withIdentifier: "from_home_to_test", sender: nil)
+        reloadRoutes()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadRoutes), name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+    }
+    
+    @objc func reloadRoutes() {
+        routes = RouteCacheService.shared.allRoutes()
+        self.tableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        routes = RouteCacheService.shared.allRoutes()
-        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

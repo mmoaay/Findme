@@ -10,6 +10,8 @@
 		286C4FC547FEB15D1A810FA7 /* Pods_Findme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6BDE2C55C90EC894F9335E /* Pods_Findme.framework */; };
 		8520E50B1F8BA5F700EAF3AE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8520E50A1F8BA5F700EAF3AE /* HomeTableViewCell.swift */; };
 		8587484D1FB404C700690A91 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587484C1FB404C700690A91 /* UIImageExtension.swift */; };
+		8593140A1FD28A9F00D05F98 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859314091FD28A9F00D05F98 /* FileUtil.swift */; };
+		8593140C1FD2936A00D05F98 /* ShareUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593140B1FD2936A00D05F98 /* ShareUtil.swift */; };
 		85B274F31FC564F80077950B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B274F21FC564F80077950B /* TestViewController.swift */; };
 		8A18A3A91F8A43D000BB35C3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */; };
 		8A18A3AC1F8A44FA00BB35C3 /* CaptureObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */; };
@@ -58,6 +60,8 @@
 		4B5009B58C69C415BE106B36 /* Pods-Findme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Findme.release.xcconfig"; path = "Pods/Target Support Files/Pods-Findme/Pods-Findme.release.xcconfig"; sourceTree = "<group>"; };
 		8520E50A1F8BA5F700EAF3AE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8587484C1FB404C700690A91 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		859314091FD28A9F00D05F98 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
+		8593140B1FD2936A00D05F98 /* ShareUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUtil.swift; sourceTree = "<group>"; };
 		85B274F21FC564F80077950B /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureObject.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				8A18A3A61F8A428100BB35C3 /* camera */,
+				859314091FD28A9F00D05F98 /* FileUtil.swift */,
+				8593140B1FD2936A00D05F98 /* ShareUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				8A86E3F11F849DB6007DB730 /* Route.swift in Sources */,
 				8AF7716F1F77771B00F2683C /* AppDelegate.swift in Sources */,
 				8A86E4061F89AC29007DB730 /* StringExtension.swift in Sources */,
+				8593140A1FD28A9F00D05F98 /* FileUtil.swift in Sources */,
 				8A86E3E91F77F130007DB730 /* HomeViewController.swift in Sources */,
 				8A86E4041F89A2A6007DB730 /* Constant.swift in Sources */,
 				8A86E3ED1F84957C007DB730 /* SCNVector3Extensions.swift in Sources */,
@@ -472,6 +479,7 @@
 				8520E50B1F8BA5F700EAF3AE /* HomeTableViewCell.swift in Sources */,
 				85B274F31FC564F80077950B /* TestViewController.swift in Sources */,
 				8A86E3EF1F849824007DB730 /* UIColorExtension.swift in Sources */,
+				8593140C1FD2936A00D05F98 /* ShareUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

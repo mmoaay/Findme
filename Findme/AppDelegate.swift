@@ -20,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SVProgressHUD.setDefaultMaskType(.clear)
         
+        if let launchOptions = launchOptions, let url = launchOptions[.url] as? URL {
+            ShareUtil.shared.openRoute(file: url)
+        }
+        
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        ShareUtil.shared.openRoute(file: url)
         return true
     }
 

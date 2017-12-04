@@ -174,12 +174,6 @@
                                     <constraint firstAttribute="bottom" secondItem="s59-qY-YVh" secondAttribute="bottom" constant="10" id="grJ-8k-b5r"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwo-1z-eN4">
-                                <rect key="frame" x="10" y="74" width="355" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,19 +184,15 @@
                             <constraint firstItem="dQ7-Fh-sIq" firstAttribute="bottom" secondItem="zP1-qW-LhO" secondAttribute="bottom" id="D4a-fi-80K"/>
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="Fsk-bO-f98"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="trailing" secondItem="dQ7-Fh-sIq" secondAttribute="trailing" id="JKL-rw-tOx"/>
-                            <constraint firstItem="hwo-1z-eN4" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" constant="10" id="c0M-0f-7wt"/>
-                            <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="hwo-1z-eN4" secondAttribute="trailing" constant="10" id="cRd-Ie-G91"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="top" secondItem="dQ7-Fh-sIq" secondAttribute="top" id="ddi-4m-4yB"/>
                             <constraint firstItem="dQ7-Fh-sIq" firstAttribute="trailing" secondItem="VlZ-nq-5rd" secondAttribute="trailing" id="kET-M1-ILf"/>
                             <constraint firstItem="zP1-qW-LhO" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="kZW-ef-fMa"/>
                             <constraint firstItem="F3t-2j-VPA" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" id="pFx-Cx-keK"/>
-                            <constraint firstItem="hwo-1z-eN4" firstAttribute="leading" secondItem="dQ7-Fh-sIq" secondAttribute="leading" constant="10" id="s8x-2O-uIR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Save me" largeTitleDisplayMode="never" id="hHx-38-B6a"/>
                     <connections>
-                        <outlet property="debugLabel" destination="hwo-1z-eN4" id="vef-9c-fee"/>
                         <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
                         <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
                         <outlet property="sceneView" destination="F3t-2j-VPA" id="K3C-fI-T7W"/>
@@ -252,7 +242,11 @@
                         <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find me" largeTitleDisplayMode="never" id="qB4-U6-SYS">
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="0sR-t5-5eW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="0sR-t5-5eW">
+                            <connections>
+                                <action selector="sharePressed:" destination="MUc-7a-cAD" id="xQg-2A-NHU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="cDJ-nh-gBc" id="GrF-cA-opJ"/>
