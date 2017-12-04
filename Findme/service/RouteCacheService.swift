@@ -14,15 +14,26 @@ class RouteCacheService {
     
     init() {
         FileUtil.createFolder(name: "/com.mmoaay.findme.routes")
-        
+        getAllRoutes()
+    }
+    
+    func getAllRoutes() {
         if let path = FileUtil.path(name: "/com.mmoaay.findme.routes") {
             let files = FileUtil.allFiles(path: path, filterTypes: ["fmr"])
             for file in files {
                 let filePath = path.appending("/").appending(file)
-                if let route = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Route {
-                    routes[String(route.identity)] = route
-                }
+                getRoute(filePath: filePath)
             }
+        }
+    }
+    
+    @discardableResult
+    func getRoute(filePath: String) -> Route? {
+        if let route = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Route {
+            routes[String(route.identity)] = route
+            return route
+        } else {
+            return nil
         }
     }
     
@@ -46,6 +57,8 @@ class RouteCacheService {
     func addRoute(route: Route) -> Bool {
         routes[String(route.identity)] = route
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+        
         if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.identity).appending(".fmr"))) {
             return NSKeyedArchiver.archiveRootObject(route, toFile: file)
         } else {
@@ -56,6 +69,9 @@ class RouteCacheService {
     @discardableResult
     func delRoute(route: Route) -> Bool {
         routes.removeValue(forKey: String(route.identity))
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+        
         if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.identity).appending(".fmr"))) {
             return FileUtil.delFile(path: file)
         } else {

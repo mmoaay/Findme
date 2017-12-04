@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SVProgressHUD
 
 extension ShareUtil: UIDocumentInteractionControllerDelegate {
     
@@ -21,8 +22,25 @@ class ShareUtil: NSObject {
     func shareRoute(shareItem:UIBarButtonItem, identity: Int64) {
         if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(identity).appending(".fmr"))) {
             document = UIDocumentInteractionController(url: URL(fileURLWithPath: file))
+            document.uti = "com.mmoaay.fmr"
             document.delegate = self
-            document .presentOpenInMenu(from: shareItem, animated: true)
+            document.presentOpenInMenu(from: shareItem, animated: true)
+        }
+    }
+    
+    func openRoute(file: URL) {
+        let identity = FileUtil.identityForFile(file: file.lastPathComponent)
+        
+        if let route = RouteCacheService.shared.routes[identity] {
+            SVProgressHUD.showInfo(withStatus: "Already got the route with name: ".appending(route.name))
+            return
+        }
+        
+        if let path = FileUtil.copyFile(at: file), let route = RouteCacheService.shared.getRoute(filePath: path) {
+            SVProgressHUD.showInfo(withStatus: "Route with name: ".appending(route.name).appending(" added."))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
+        } else {
+            SVProgressHUD.showError(withStatus: "Open shared route failed!")
         }
     }
 }

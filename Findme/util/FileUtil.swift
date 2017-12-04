@@ -43,4 +43,32 @@ class FileUtil {
         }
         return true
     }
+    
+    static func identityForFile(file: String) -> String {
+        var identity = file
+        let names = file.components(separatedBy: "-")
+        if names.count > 1 {
+            identity = names[0]
+        } else {
+            let names = file.components(separatedBy: ".")
+            if names.count > 1 {
+                identity = names[0]
+            }
+        }
+        return identity
+    }
+    
+    static func copyFile(at: URL) -> String? {
+        do {
+            let identity = FileUtil.identityForFile(file: at.lastPathComponent)
+            if let path = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(identity).appending(".fmr")) {
+                try FileManager.default.copyItem(at: at, to: URL(fileURLWithPath: path))
+                return path
+            } else {
+                return nil
+            }
+        } catch {
+            return nil
+        }
+    }
 }
