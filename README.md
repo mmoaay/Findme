@@ -1,12 +1,12 @@
-# Findme
+# Findme - Using ARKit to find me
 
 ![Findme](https://github.com/mmoaay/Findme/blob/develop/findme_320_320.png)
 
-An ARKit App that can do following three things:
+An **ARKit** App that can do three things:
 
-- Recording the route you've passed by with **ARKit**
+- Recording the route you've passed by
 - Sharing the route with your friends
-- Then they follow the route to find you with **ARKit**
+- Then your friends follow the route to find you
 
 ## Demo
 
@@ -16,6 +16,11 @@ Recording the route you've passed by
 
 ![Recording](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif)
 
+Key information:
+
+- An picture that indicate the start position
+- The route
+
 ### Sharing
 
 Sharing the route with your friends
@@ -24,7 +29,7 @@ Sharing the route with your friends
 
 ### Searching
 
-Your friends follow the route to find you
+Your friends should find the start position of the route first, then follow it to find you
 
 ![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
 
