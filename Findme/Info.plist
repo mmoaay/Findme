@@ -7,6 +7,13 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>/Users/mmoaay/Desktop/findme_44_58.png</string>
+				<string>/Users/mmoaay/Desktop/findme_320_320.png</string>
+				<string>/Users/mmoaay/Desktop/findme_320_320.png</string>
+				<string>/Users/mmoaay/Desktop/findme_64_64.png</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>Findme route file</string>
 			<key>LSHandlerRank</key>
@@ -70,6 +77,10 @@
 			<string>Findme route file</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.mmoaay.findme.route</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>findme_320_320</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>findme_64_64</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -90,6 +101,10 @@
 			<string>Findme route file</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.mmoaay.findme.route</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>findme_320_320</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>findme_64_64</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
