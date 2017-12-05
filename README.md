@@ -1,21 +1,23 @@
 # Findme
 
-![](https://github.com/mmoaay/Findme/blob/develop/findme_320_320.png)
+![Findme](https://github.com/mmoaay/Findme/blob/develop/findme_320_320.png)
 
-An ARKit application that can do following three things:
+An ARKit App that can do following three things:
 
 - Recording the route you've passed by with **ARKit**
 - Sharing the route with your friends
 - Then they follow the route to find you with **ARKit**
 
-# Demo
+## Demo
 
-## Recording
+![Recording](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif)
 
-## Sharing
+![Sharing](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif)
 
-## Searching
+![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
 
-## Sample route
+### Sample route
 
+![Start](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo_001.jpeg)
 
+![ING](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo_002.jpeg)
