@@ -12,6 +12,7 @@
 		8587484D1FB404C700690A91 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587484C1FB404C700690A91 /* UIImageExtension.swift */; };
 		8593140A1FD28A9F00D05F98 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859314091FD28A9F00D05F98 /* FileUtil.swift */; };
 		8593140C1FD2936A00D05F98 /* ShareUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593140B1FD2936A00D05F98 /* ShareUtil.swift */; };
+		85ACB2281FD674C0007704FC /* NodeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ACB2271FD674C0007704FC /* NodeUtil.swift */; };
 		85B274F31FC564F80077950B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B274F21FC564F80077950B /* TestViewController.swift */; };
 		8A18A3A91F8A43D000BB35C3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */; };
 		8A18A3AC1F8A44FA00BB35C3 /* CaptureObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */; };
@@ -62,6 +63,9 @@
 		8587484C1FB404C700690A91 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		859314091FD28A9F00D05F98 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		8593140B1FD2936A00D05F98 /* ShareUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUtil.swift; sourceTree = "<group>"; };
+		85ACB2251FD64305007704FC /* findme_320_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findme_320_320.png; sourceTree = "<group>"; };
+		85ACB2261FD6430D007704FC /* findme_64_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findme_64_64.png; sourceTree = "<group>"; };
+		85ACB2271FD674C0007704FC /* NodeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeUtil.swift; sourceTree = "<group>"; };
 		85B274F21FC564F80077950B /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8A18A3A81F8A42C800BB35C3 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		8A18A3AB1F8A44FA00BB35C3 /* CaptureObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureObject.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				8A18A3A61F8A428100BB35C3 /* camera */,
 				859314091FD28A9F00D05F98 /* FileUtil.swift */,
 				8593140B1FD2936A00D05F98 /* ShareUtil.swift */,
+				85ACB2271FD674C0007704FC /* NodeUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -217,6 +222,8 @@
 		8AF771621F77771B00F2683C = {
 			isa = PBXGroup;
 			children = (
+				85ACB2261FD6430D007704FC /* findme_64_64.png */,
+				85ACB2251FD64305007704FC /* findme_320_320.png */,
 				8AF7716D1F77771B00F2683C /* Findme */,
 				8AF771841F77771B00F2683C /* FindmeTests */,
 				8AF7718F1F77771B00F2683C /* FindmeUITests */,
@@ -478,6 +485,7 @@
 				8A86E3F71F84B191007DB730 /* RouteCacheService.swift in Sources */,
 				8520E50B1F8BA5F700EAF3AE /* HomeTableViewCell.swift in Sources */,
 				85B274F31FC564F80077950B /* TestViewController.swift in Sources */,
+				85ACB2281FD674C0007704FC /* NodeUtil.swift in Sources */,
 				8A86E3EF1F849824007DB730 /* UIColorExtension.swift in Sources */,
 				8593140C1FD2936A00D05F98 /* ShareUtil.swift in Sources */,
 			);

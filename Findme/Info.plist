@@ -8,16 +8,19 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
-			<array/>
+			<array>
+				<string>/Users/mmoaay/Desktop/findme_44_58.png</string>
+				<string>/Users/mmoaay/Desktop/findme_320_320.png</string>
+				<string>/Users/mmoaay/Desktop/findme_320_320.png</string>
+				<string>/Users/mmoaay/Desktop/findme_64_64.png</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>Findme route file</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.mmoaay.fmr</string>
+				<string>com.mmoaay.findme.route</string>
 			</array>
 		</dict>
 	</array>
@@ -66,13 +69,6 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTITagTypeSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>fmr</string>
-				</array>
-			</dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
@@ -80,19 +76,23 @@
 			<key>UTTypeDescription</key>
 			<string>Findme route file</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.mmoaay.fmr</string>
+			<string>com.mmoaay.findme.route</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>findme_320_320</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>findme_64_64</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>fmr</string>
+				<key>public.mime-type</key>
+				<string>application/fmr</string>
+			</dict>
 		</dict>
 	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTITagTypeSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>fmr</string>
-				</array>
-			</dict>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
@@ -100,7 +100,18 @@
 			<key>UTTypeDescription</key>
 			<string>Findme route file</string>
 			<key>UTTypeIdentifier</key>
-			<string>fmr</string>
+			<string>com.mmoaay.findme.route</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>findme_320_320</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>findme_64_64</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>fmr</string>
+				<key>public.mime-type</key>
+				<string>application/fmr</string>
+			</dict>
 		</dict>
 	</array>
 </dict>

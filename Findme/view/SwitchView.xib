@@ -51,22 +51,34 @@
                         <action selector="switchPressed:" destination="-1" eventType="touchUpInside" id="IV6-Sw-U6q"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-51-ehj">
-                    <rect key="frame" x="10" y="461" width="257" height="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-UN-3Bw">
+                    <rect key="frame" x="0.0" y="461" width="277" height="20"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-51-ehj">
+                            <rect key="frame" x="10" y="10" width="257" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="mGg-51-ehj" firstAttribute="leading" secondItem="k0K-UN-3Bw" secondAttribute="leading" constant="10" id="2yI-2F-V5q"/>
+                        <constraint firstItem="mGg-51-ehj" firstAttribute="top" secondItem="k0K-UN-3Bw" secondAttribute="top" constant="10" id="A4Z-rw-4w4"/>
+                        <constraint firstAttribute="trailing" secondItem="mGg-51-ehj" secondAttribute="trailing" constant="10" id="gBD-zi-nrB"/>
+                        <constraint firstAttribute="bottom" secondItem="mGg-51-ehj" secondAttribute="bottom" constant="10" id="qXt-pI-MAC"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mGg-51-ehj" secondAttribute="bottom" constant="20" id="5bs-aa-4az"/>
                 <constraint firstItem="9PE-Cj-lNK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="E83-pZ-hEc"/>
-                <constraint firstItem="mGg-51-ehj" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-10" id="MSX-mm-pTd"/>
                 <constraint firstItem="hDa-s8-8wP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="PTK-Ho-tQ7"/>
-                <constraint firstItem="mGg-51-ehj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="X5d-3m-XRD"/>
                 <constraint firstItem="9PE-Cj-lNK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Zy9-Zb-0cQ"/>
                 <constraint firstItem="hDa-s8-8wP" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="iIy-8Y-MQp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="k0K-UN-3Bw" secondAttribute="trailing" id="nDX-ii-rYy"/>
+                <constraint firstItem="k0K-UN-3Bw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oCF-g6-DgV"/>
+                <constraint firstItem="k0K-UN-3Bw" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="uBU-43-rAi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
