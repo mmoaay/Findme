@@ -58,7 +58,7 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
+//        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
         // Set the scene to the view
         sceneView.scene = SCNScene()

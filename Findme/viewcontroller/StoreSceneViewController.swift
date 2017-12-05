@@ -26,7 +26,7 @@ extension StoreSceneViewController: SwitchViewDelegate {
             break
         case .done:
             if let last = self.last {
-                addEndNode(position: last)
+                NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: last)
                 self.last = nil
                 
                 route.scene = sceneView.scene
@@ -92,7 +92,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
+//        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         
         // Set the scene to the view
         sceneView.scene = SCNScene()
@@ -119,30 +119,6 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
-
-    private func addBeginNode(position: SCNVector3) {
-        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-        let node = SCNNode(geometry: box)
-        node.position = position
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "43CD80")
-        sceneView.scene.rootNode.addChildNode(node)
-    }
-    
-    private func addEndNode(position: SCNVector3) {
-        let box = SCNBox(width: Constant.ROUTE_DOT_RADIUS*5, height: Constant.ROUTE_DOT_RADIUS*5, length: Constant.ROUTE_DOT_RADIUS*5, chamferRadius: 0)
-        let node = SCNNode(geometry: box)
-        node.position = position
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor(hexColor: "CD4F39")
-        sceneView.scene.rootNode.addChildNode(node)
-    }
-    
-    private func addNormalNode(position: SCNVector3) {
-        let sphere = SCNSphere(radius: Constant.ROUTE_DOT_RADIUS)
-        let node = SCNNode(geometry: sphere)
-        node.position = position
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-        sceneView.scene.rootNode.addChildNode(node)
-    }
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         DispatchQueue.main.async {
@@ -151,12 +127,12 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
                 
                 let current = pointOfView.position
                 if let last = self.last {
-                    if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL {
-                        self.addNormalNode(position: current);
+                    if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL*Constant.SCALE_INTERVAL {
+                        NodeUtil.addNormalNode(rootNode: self.sceneView.scene.rootNode, current: current, last: last);
                         self.last = current
                     }
                 } else {
-                    self.addBeginNode(position: current)
+                    NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: current)
                     self.last = current
                 }
                 
