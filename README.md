@@ -33,7 +33,7 @@ Your friends should find the start position of the route first, then follow it t
 
 ![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
 
-### Sample route
+### Some routes
 
 ![Start](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo_001.jpeg)
 
