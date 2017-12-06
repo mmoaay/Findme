@@ -80,7 +80,7 @@ class StoreSceneViewController: UIViewController, ARSCNViewDelegate {
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
-        configuration.isLightEstimationEnabled = false
+//        configuration.isLightEstimationEnabled = false
         return configuration
     }()
     

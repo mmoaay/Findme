@@ -46,7 +46,7 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
-        configuration.isLightEstimationEnabled = false
+//        configuration.isLightEstimationEnabled = false
         return configuration
     }()
     
@@ -73,7 +73,7 @@ class SearchSceneViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func sharePressed(_ sender: UIBarButtonItem) {
-        ShareUtil.shared.shareRoute(shareItem: sender, identity: route.identity)
+        ShareUtil.shared.shareRoute(view: self.view, identity: route.identity)
     }
     
     override func didReceiveMemoryWarning() {

@@ -8,6 +8,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
             <connections>
@@ -37,7 +43,7 @@
                         <constraint firstAttribute="height" constant="200" id="WU8-Sp-9Yw"/>
                         <constraint firstAttribute="width" constant="200" id="pSD-bA-icZ"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
                     <state key="normal" title="Start"/>
                     <state key="disabled" title="Hold on...">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,7 +62,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-51-ehj">
                             <rect key="frame" x="10" y="10" width="257" height="0.0"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>

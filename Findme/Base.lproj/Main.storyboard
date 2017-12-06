@@ -10,6 +10,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Findme-->
         <scene sceneID="Fw4-Jd-NKu">
@@ -34,17 +40,17 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTr-PH-oYJ">
-                                            <rect key="frame" x="8" y="129.5" width="359" height="62"/>
+                                            <rect key="frame" x="8" y="130.5" width="359" height="61"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmD-Vp-tGd">
-                                                    <rect key="frame" x="10" y="10" width="339" height="24"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="10" y="10" width="339" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                                    <color key="textColor" red="0.29411764709999999" green="0.79607843140000001" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create at 00-00-0000 00:00:00" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xko-6L-4aA">
-                                                    <rect key="frame" x="10" y="34" width="339" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="10" y="32.5" width="339" height="18.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -84,8 +90,8 @@
                             <outlet property="delegate" destination="iHB-Mh-v7M" id="uvL-Xf-7tc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Findme" id="Jby-Cg-X1T">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="t1F-gF-YIE">
+                    <navigationItem key="navigationItem" title="Findme" largeTitleDisplayMode="always" id="Jby-Cg-X1T" customClass="NavigationItem" customModule="Findme" customModuleProvider="target">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="camera_icon" id="t1F-gF-YIE">
                             <connections>
                                 <segue destination="BV1-FR-VrT" kind="show" identifier="from_home_to_store" id="316-V7-HJR"/>
                             </connections>
@@ -113,15 +119,17 @@
         <scene sceneID="JDS-6Q-5Na">
             <objects>
                 <navigationController id="gdt-sB-Qds" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Rcz-sh-soT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Rcz-sh-soT" customClass="NavigationBar" customModule="Findme" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.29411764705882354" green="0.79607843137254897" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -153,14 +161,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlZ-nq-5rd">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the routes" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh" customClass="TextField" customModule="Material">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter the name of the route" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s59-qY-YVh" customClass="TextField" customModule="Material">
                                         <rect key="frame" x="10" y="10" width="355" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MbR-GM-GOZ"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -189,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQ7-Fh-sIq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Save me" largeTitleDisplayMode="never" id="hHx-38-B6a"/>
+                    <navigationItem key="navigationItem" title="Save me" largeTitleDisplayMode="never" id="hHx-38-B6a" customClass="NavigationItem" customModule="Findme" customModuleProvider="target"/>
                     <connections>
                         <outlet property="nameTextField" destination="s59-qY-YVh" id="v9r-Rb-eIU"/>
                         <outlet property="nameView" destination="VlZ-nq-5rd" id="nEU-n2-o8u"/>
@@ -239,8 +247,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-yc-tvy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Find me" largeTitleDisplayMode="never" id="qB4-U6-SYS">
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="0sR-t5-5eW">
+                    <navigationItem key="navigationItem" title="Find me" largeTitleDisplayMode="never" id="qB4-U6-SYS" customClass="NavigationItem" customModule="Findme" customModuleProvider="target">
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="mail_icon" id="0sR-t5-5eW">
                             <connections>
                                 <action selector="sharePressed:" destination="MUc-7a-cAD" id="xQg-2A-NHU"/>
                             </connections>
@@ -277,7 +285,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9t3-7Q-6wP"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Test" largeTitleDisplayMode="never" id="KAT-Sy-y2c">
+                    <navigationItem key="navigationItem" title="Test" largeTitleDisplayMode="never" id="KAT-Sy-y2c" customClass="NavigationItem" customModule="Findme" customModuleProvider="target">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="cxK-r4-MOc">
                                 <connections>
@@ -300,4 +308,8 @@
             <point key="canvasLocation" x="1398" y="138"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera_icon" width="20" height="20"/>
+        <image name="mail_icon" width="20" height="20"/>
+    </resources>
 </document>

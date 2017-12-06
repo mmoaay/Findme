@@ -31,19 +31,19 @@ enum OperationStatus {
         case .going:
             switch type {
             case .store:
-                return "Please hold on for " + String(Constant.WAIT_TIME) + " seconds, then press Routing and follow the dashed circle to record the route to find me"
+                return "Please hold on for " + String(Constant.WAIT_TIME) + " seconds, then press Routing"
             case .search:
-                return "Please hold on for " + String(Constant.WAIT_TIME) + " seconds, then press Searching and follow the the route to find me"
+                return "Please hold on for " + String(Constant.WAIT_TIME) + " seconds, then press Searching"
             }
         case .done:
             switch type {
             case .store:
-                return "Press Done if you've finish the route to find me"
+                return "Follow the dashed circle to record the route"
             case .search:
-                return "Press Done if you've find me"
+                return "Follow the route marked with green arrow to find me"
             }
         case .save:
-            return "Press Save to save the route to find me"
+            return "Press Save to save the route"
         }
     }
     

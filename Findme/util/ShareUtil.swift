@@ -19,12 +19,13 @@ class ShareUtil: NSObject {
     
     private var document = UIDocumentInteractionController()
     
-    func shareRoute(shareItem:UIBarButtonItem, identity: Int64) {
+    func shareRoute(view: UIView, identity: Int64) {
         if let file = FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(identity).appending(".fmr"))) {
             document = UIDocumentInteractionController(url: URL(fileURLWithPath: file))
             document.uti = "com.mmoaay.fmr"
             document.delegate = self
-            document.presentOpenInMenu(from: shareItem, animated: true)
+            document.presentOpenInMenu(from: .zero, in: view, animated: true)
+//            document.presentOpenInMenu(from: shareItem, animated: true)
         }
     }
     
