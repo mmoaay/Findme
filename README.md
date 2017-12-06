@@ -14,8 +14,6 @@ An **ARKit** App that can do three things:
 
 ## Show time
 
-![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif) ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif) ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
-
 ### Recording
 
 Recording the route you've passed by
