@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Bold</string>
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwitchView" customModule="Findme" customModuleProvider="target">
+            <connections>
+                <outlet property="captureView" destination="hDa-s8-8wP" id="uGL-yc-7WY"/>
+                <outlet property="contentLabel" destination="mGg-51-ehj" id="CIo-ou-HFF"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="iOd-de-mMB"/>
+                <outlet property="switchButton" destination="9PE-Cj-lNK" id="1th-fX-6g2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="277" height="481"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-s8-8wP" customClass="DashedBorderView" customModule="Findme" customModuleProvider="target">
+                    <rect key="frame" x="28" y="140" width="220" height="220"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="YIL-B0-lju"/>
+                        <constraint firstAttribute="height" constant="220" id="bSJ-Ug-Pt9"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Cj-lNK" customClass="Button" customModule="Material">
+                    <rect key="frame" x="38.5" y="150.5" width="200" height="200"/>
+                    <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="WU8-Sp-9Yw"/>
+                        <constraint firstAttribute="width" constant="200" id="pSD-bA-icZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
+                    <state key="normal" title="Start"/>
+                    <state key="disabled" title="Hold on...">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="switchPressed:" destination="-1" eventType="touchUpInside" id="IV6-Sw-U6q"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-UN-3Bw">
+                    <rect key="frame" x="0.0" y="461" width="277" height="20"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-51-ehj">
+                            <rect key="frame" x="10" y="10" width="257" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="mGg-51-ehj" firstAttribute="leading" secondItem="k0K-UN-3Bw" secondAttribute="leading" constant="10" id="2yI-2F-V5q"/>
+                        <constraint firstItem="mGg-51-ehj" firstAttribute="top" secondItem="k0K-UN-3Bw" secondAttribute="top" constant="10" id="A4Z-rw-4w4"/>
+                        <constraint firstAttribute="trailing" secondItem="mGg-51-ehj" secondAttribute="trailing" constant="10" id="gBD-zi-nrB"/>
+                        <constraint firstAttribute="bottom" secondItem="mGg-51-ehj" secondAttribute="bottom" constant="10" id="qXt-pI-MAC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9PE-Cj-lNK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="E83-pZ-hEc"/>
+                <constraint firstItem="hDa-s8-8wP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="PTK-Ho-tQ7"/>
+                <constraint firstItem="9PE-Cj-lNK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Zy9-Zb-0cQ"/>
+                <constraint firstItem="hDa-s8-8wP" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="iIy-8Y-MQp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="k0K-UN-3Bw" secondAttribute="trailing" id="nDX-ii-rYy"/>
+                <constraint firstItem="k0K-UN-3Bw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oCF-g6-DgV"/>
+                <constraint firstItem="k0K-UN-3Bw" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="uBU-43-rAi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-13.5" y="-38.5"/>
+        </view>
+    </objects>
+</document>

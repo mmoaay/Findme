@@ -1,31 +1,28 @@
 PODS:
-  - IQKeyboardManager (5.0.3)
-  - Material (2.10.3):
-    - Material/Core (= 2.10.3)
-  - Material/Core (2.10.3)
-  - Realm (2.10.2):
-    - Realm/Headers (= 2.10.2)
-  - Realm/Headers (2.10.2)
-  - RealmSwift (2.10.2):
-    - Realm (= 2.10.2)
+  - IQKeyboardManager (5.0.6)
+  - Material (2.12.13):
+    - Material/Core (= 2.12.13)
+  - Material/Core (2.12.13):
+    - Motion (~> 1.2.5)
+  - Motion (1.2.5):
+    - Motion/Core (= 1.2.5)
+  - Motion/Core (1.2.5)
   - SnapKit (4.0.0)
-  - SVProgressHUD (2.2.1)
+  - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - IQKeyboardManager
   - Material
-  - RealmSwift
   - SnapKit (~> 4.0.0)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: dc5b18b47e5170e4d150bb86dbee8c8a2fc48997
-  Material: 895b60e978e297dbead93a17590bea9f9fe85f0a
-  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
-  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
+  Material: 91e618c162203c48b677535aee662e1f8addc2c8
+  Motion: 88a8bee21926af792333f4b9e7170f710e9e48f3
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 91287aa38212e171c30a59100590650e88592da2
+PODFILE CHECKSUM: dee636c8b0772409f58591a359851ef0ced004b0
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.1
