@@ -1,6 +1,10 @@
 # Findme - Using ARKit to find me
 
-![Findme](https://github.com/mmoaay/Findme/blob/develop/findme_320_320.png)
+![Findme](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_banner.png)
+
+[![Language](https://img.shields.io/badge/language-swift-orange.svg)](https://github.com/apple/swift)
+[![Weibo](https://img.shields.io/badge/weibo-@mmoaay-red.svg?style=flat)](https://weibo.com/smmoaay)
+![\<3](https://img.shields.io/badge/made%20with-%3C3-orange.svg)
 
 An **ARKit** App that can do three things:
 
@@ -8,7 +12,9 @@ An **ARKit** App that can do three things:
 - Sharing the route with your friends
 - Then your friends follow the route to find you
 
-## Demo
+![Demo](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo.png)
+
+## Show time
 
 ### Recording
 
@@ -33,8 +39,10 @@ Your friends should find the start position of the route first, then follow it t
 
 ![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
 
-### Some routes
+## Author
 
-![Start](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo_001.jpeg)
+mmoaay, mm@swift.gg
 
-![ING](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo_002.jpeg)
+## License
+
+Findme is available under the GPL-3.0 license. See the LICENSE file for more info.
