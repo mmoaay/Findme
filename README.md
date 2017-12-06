@@ -14,10 +14,7 @@ An **ARKit** App that can do three things:
 
 ## Show time
 
-Recording  |  Sharing  |  Searching
-:-:|:-:|:-:
-Recording the route you've passed by  |  Sharing the route with your friends  |  Your friends received the route you've sent to them and find the start position of the route according to the picture, then follow the route to find you
-![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif)  |  ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif)  |  ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
+![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif) ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif) ![](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif)
 
 ### Recording
 
