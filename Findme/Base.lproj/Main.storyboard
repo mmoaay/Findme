@@ -17,6 +17,74 @@
         </array>
     </customFonts>
     <scenes>
+        <!--About me-->
+        <scene sceneID="HxA-1Q-Dra">
+            <objects>
+                <viewController id="VmX-kf-0aM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w2s-wF-unC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfM-Bq-g1v">
+                                <rect key="frame" x="108.5" y="202" width="158" height="327.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_image" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-QN-xth">
+                                        <rect key="frame" x="-41.5" y="0.0" width="240" height="240"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="120"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail: mm@swift.gg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKm-ZQ-GfY">
+                                        <rect key="frame" x="0.0" y="250" width="158" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weibo: mmoaay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-b3-lxh">
+                                        <rect key="frame" x="0.0" y="277.5" width="158" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github: mmoaay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPs-P0-a7j">
+                                        <rect key="frame" x="0.0" y="305" width="158" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eXd-b3-lxh" secondAttribute="trailing" id="4Xl-Qb-AN6"/>
+                                    <constraint firstItem="J0f-QN-xth" firstAttribute="centerX" secondItem="dfM-Bq-g1v" secondAttribute="centerX" id="64a-jP-cOV"/>
+                                    <constraint firstItem="eXd-b3-lxh" firstAttribute="top" secondItem="QKm-ZQ-GfY" secondAttribute="bottom" constant="5" id="GYn-Vb-TMt"/>
+                                    <constraint firstItem="eXd-b3-lxh" firstAttribute="leading" secondItem="dfM-Bq-g1v" secondAttribute="leading" id="Qof-SX-FjC"/>
+                                    <constraint firstItem="QKm-ZQ-GfY" firstAttribute="leading" secondItem="dfM-Bq-g1v" secondAttribute="leading" id="UOZ-wr-Awx"/>
+                                    <constraint firstAttribute="trailing" secondItem="QKm-ZQ-GfY" secondAttribute="trailing" id="XUT-hW-34Y"/>
+                                    <constraint firstItem="mPs-P0-a7j" firstAttribute="leading" secondItem="dfM-Bq-g1v" secondAttribute="leading" id="YMh-g7-77X"/>
+                                    <constraint firstItem="QKm-ZQ-GfY" firstAttribute="top" secondItem="J0f-QN-xth" secondAttribute="bottom" constant="10" id="ZdB-eY-GOy"/>
+                                    <constraint firstAttribute="trailing" secondItem="mPs-P0-a7j" secondAttribute="trailing" id="Zoy-HJ-605"/>
+                                    <constraint firstAttribute="bottom" secondItem="mPs-P0-a7j" secondAttribute="bottom" id="gkt-pF-Thz"/>
+                                    <constraint firstItem="J0f-QN-xth" firstAttribute="top" secondItem="dfM-Bq-g1v" secondAttribute="top" id="reu-iV-TQJ"/>
+                                    <constraint firstItem="mPs-P0-a7j" firstAttribute="top" secondItem="eXd-b3-lxh" secondAttribute="bottom" constant="5" id="zWH-Zh-SuV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dfM-Bq-g1v" firstAttribute="centerY" secondItem="wAd-C3-M2t" secondAttribute="centerY" id="ccQ-cA-TjO"/>
+                            <constraint firstItem="dfM-Bq-g1v" firstAttribute="centerX" secondItem="wAd-C3-M2t" secondAttribute="centerX" id="pWj-kv-Qf9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wAd-C3-M2t"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About me" largeTitleDisplayMode="never" id="gqm-7A-4eU" customClass="NavigationItem" customModule="Findme" customModuleProvider="target"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMl-2o-N4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-767.20000000000005" y="-582.45877061469275"/>
+        </scene>
         <!--Findme-->
         <scene sceneID="Fw4-Jd-NKu">
             <objects>
@@ -91,6 +159,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Findme" largeTitleDisplayMode="always" id="Jby-Cg-X1T" customClass="NavigationItem" customModule="Findme" customModuleProvider="target">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="conver_icon" id="zAS-to-vyd">
+                            <connections>
+                                <segue destination="VmX-kf-0aM" kind="show" identifier="from_home_to_about" id="zIj-MI-5Jz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="camera_icon" id="t1F-gF-YIE">
                             <connections>
                                 <segue destination="BV1-FR-VrT" kind="show" identifier="from_home_to_store" id="316-V7-HJR"/>
@@ -305,11 +378,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3S-fu-sdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1398" y="138"/>
+            <point key="canvasLocation" x="1404" y="145"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera_icon" width="20" height="20"/>
+        <image name="conver_icon" width="20" height="20"/>
+        <image name="head_image" width="240" height="240"/>
         <image name="mail_icon" width="20" height="20"/>
     </resources>
 </document>
