@@ -23,7 +23,7 @@ An **ARKit** App that can do three things:
 
 ### Demo video
 
-[You can find the demo video of Findme at YouTube](https://youtu.be/hnj9ompKtp0)
+You can find the demo video of Findme at [YouTube](https://youtu.be/hnj9ompKtp0)
 
 ### Step by Step
 
