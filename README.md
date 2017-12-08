@@ -29,7 +29,7 @@ An **ARKit** App that can do three things:
 
 | Recording | Sharing | Searching |
 |:---------:|:-------:|:---------:|
-| ![Recording](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif) | ![Sharing](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif) | ![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif) |
+| ![Recording](https://github.com/mmoaay/Findme/blob/master/Findme/resources/findme_recording.gif) | ![Sharing](https://github.com/mmoaay/Findme/blob/master/Findme/resources/findme_sharing.gif) | ![Searching](https://github.com/mmoaay/Findme/blob/master/Findme/resources/findme_searching.gif) |
 
 #### Recording
 
