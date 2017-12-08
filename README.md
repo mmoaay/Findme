@@ -15,41 +15,51 @@ An **ARKit** App that can do three things:
 - Sharing the route with your friends
 - Your friends can find the start position of the route, then follow it to find you
 
-## Preview
+## 🌹Preview
 
 ![Demo](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo.png)
 
-## Show time
+## 🎁Show time
 
-### Recording
+### Demo video
 
-Recording the route you've passed by
+[You can find the demo video of Findme at YouTube](https://youtu.be/hnj9ompKtp0)
 
-Key information:
-
-- An picture that can help your friends to find the start position
-- The route
-
-### Sharing
-
-Sharing the route with your friends
-
-### Searching
-
-Your friends received the route you've sent to them and find the start position of the route according to the picture, then follow the route to find you
+### Step by Step
 
 | Recording | Sharing | Searching |
 |:---------:|:-------:|:---------:|
 | ![Recording](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_recording.gif) | ![Sharing](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_sharing.gif) | ![Searching](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_searching.gif) |
 
-## Improving
+#### Recording
+
+Recording the route you've passed by.
+
+#### Sharing
+
+Sharing the route with your friends through social apps such as Line, QQ or Wechat.
+
+#### Searching
+
+Your friends received the route you've sent to them and find the start position of the route according to the picture, then follow the route to find you
+
+## ℹ️Key information for the route
+
+- An picture that can help your friends to find the start position
+- The scene
+
+## ⚠️Warning
+
+You should find the **very start position of the route**, otherwise the route will lead you to an unknown target.
+
+## 👆Improving
 
 **ARKit** is not so stable now, so we've tried some methods to improve the accuracy of the route, mainly at these two branches:
 
-- [Improving according to location](https://github.com/mmoaay/Findme/tree/feature/location_optimize)
-- [Improving according to distance](https://github.com/mmoaay/Findme/tree/feature/distance_optimize)
+- [According to location](https://github.com/mmoaay/Findme/tree/feature/location_optimize)
+- [According to distance](https://github.com/mmoaay/Findme/tree/feature/distance_optimize)
 
-## Author
+## 🤦‍♂️Author
 
 mmoaay, mm@swift.gg
 
