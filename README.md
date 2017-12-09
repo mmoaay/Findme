@@ -19,6 +19,10 @@ An **ARKit** App that can do three things:
 
 ![Demo](https://github.com/mmoaay/Findme/blob/develop/Findme/resources/findme_demo.png)
 
+## App Store
+
+You can download Findme at [AR FindMe](https://itunes.apple.com/cn/app/findme/id1321822486?mt=8)
+
 ## 🎁Show time
 
 ### Demo video
