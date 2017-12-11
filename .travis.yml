@@ -13,7 +13,7 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild -list
-  - xcodebuild -workspace Findme.xcworkspace -scheme Findme -destination "OS=11.0,name=iPhone X" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty
+  - xcodebuild -workspace Findme.xcworkspace -scheme Findme -destination "platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Generic iOS Device" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty
 
 after_success:
   - sleep 3
