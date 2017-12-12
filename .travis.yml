@@ -1,5 +1,6 @@
+
 osx_image: xcode9.0
-language: swift
+language: objective-c
 
 cache: cocoapods
 podfile: Podfile
@@ -12,8 +13,8 @@ before_install:
 
 script:
   - set -o pipefail
-  - xcodebuild -list
-  - xcodebuild -workspace Findme.xcworkspace -scheme Findme -destination "platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Generic iOS Device" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty
+  - xcodebuild -workspace Findme.xcworkspace -scheme Findme -destination "OS=11.0,name=iPhone SE" -configuration Debug ONLY_ACTIVE_ARCH=NO build CODE_SIGN_IDENTITY='' | xcpretty
 
 after_success:
   - sleep 3
+  
